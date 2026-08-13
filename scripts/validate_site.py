@@ -63,7 +63,7 @@ def main() -> None:
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
     assert "https://openlyuseful.org/og-v2.png" in html
-    assert "/design-system/" in parser.links
+    assert "/design-system" in parser.links
     assert "/brand/open-shell-mark.svg" in html
 
     system_html = (ROOT / "design-system/index.html").read_text(encoding="utf-8")
