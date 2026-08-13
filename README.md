@@ -11,7 +11,7 @@ This is a dependency-free static site deployed on Vercel. `openlyuseful.org` is 
 - [`design-system/README.md`](design-system/README.md) documents strategy, tokens, components, patterns, accessibility, voice, and governance.
 - [`design-system/tokens.css`](design-system/tokens.css) is the canonical implementation token source.
 - [`brand/README.md`](brand/README.md) documents the Open Shell identity, Shellfolk character language, asset rules, and brand-kit board.
-- The live public specimen is available at [`/design-system/`](https://openlyuseful.org/design-system/).
+- The live public specimen is available at [`/design-system`](https://openlyuseful.org/design-system).
 
 ## Local preview
 
