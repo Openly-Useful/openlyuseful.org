@@ -1,5 +1,25 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "https://openlyuseful.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.openlyuseful.com" }],
+      "destination": "https://openlyuseful.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.openlyuseful.org" }],
+      "destination": "https://openlyuseful.org/:path*",
+      "permanent": true
+    }
+  ]
 }
