@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Openly Useful Open Shell mark</title>
+  <desc id="desc">A rounded opening bracket representing a Unix shell, an open door, and a safe boundary.</desc>
+  <path d="M47 9H27C16 9 10 15 10 26v12c0 11 6 17 17 17h20" fill="none" stroke="#247a4b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
