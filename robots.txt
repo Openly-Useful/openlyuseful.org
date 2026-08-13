@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://openlyuseful.org/sitemap.xml
