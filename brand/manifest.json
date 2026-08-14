@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "brandVersion": "3.0.0",
+  "brandVersion": "3.0.1",
   "canonicalName": "Openly Useful",
   "canonicalTagline": "Useful things, openly made.",
   "assets": {
@@ -8,9 +8,17 @@
     "reverse": "/brand/ou-monitor-reverse-v3.svg",
     "character": "/brand/ou-monitor-character-v3.svg",
     "monitorfolk": "/brand/ou-monitor-bot-v3.svg",
+    "wordmark": "/brand/ou-wordmark-v4.svg",
+    "wordmarkReverse": "/brand/ou-wordmark-reverse-v4.svg",
+    "tagline": "/brand/ou-tagline-v4.svg",
+    "taglineReverse": "/brand/ou-tagline-reverse-v4.svg",
+    "horizontalLockup": "/brand/ou-lockup-horizontal-v4.svg",
+    "horizontalLockupReverse": "/brand/ou-lockup-horizontal-reverse-v4.svg",
+    "stackedLockup": "/brand/ou-lockup-stacked-v4.svg",
+    "stackedLockupReverse": "/brand/ou-lockup-stacked-reverse-v4.svg",
     "favicon": "/favicon-v3.svg",
-    "brandBoard": "/brand/brandkit-open-monitor-v3.png",
-    "socialCard": "/og-v5.png"
+    "brandBoard": "/brand/brandkit-open-monitor-v4.png",
+    "socialCard": "/og-v6.png"
   },
   "fonts": {
     "wordmark": "/design-system/fonts/AtkinsonHyperlegibleNext-variable.woff2",
@@ -22,18 +30,30 @@
     "horizontal": {
       "class": "ou-lockup--horizontal",
       "contexts": ["site header", "site footer"],
-      "mark": "34px",
-      "wordmark": "18px",
-      "gap": "10px",
-      "wordmarkScaleX": 1.34
+      "asset": "/brand/ou-lockup-horizontal-v4.svg",
+      "reverseAsset": "/brand/ou-lockup-horizontal-reverse-v4.svg",
+      "height": "34px",
+      "viewBox": "0 0 354.502 64"
     },
     "stacked": {
       "class": "ou-lockup--stacked",
       "contexts": ["homepage hero", "brand board", "social card"],
-      "wordmarkWeight": 780,
-      "wordmarkTracking": "-0.062em",
-      "taglineWeight": 700,
-      "taglineTracking": "-0.035em"
+      "asset": "/brand/ou-lockup-stacked-v4.svg",
+      "reverseAsset": "/brand/ou-lockup-stacked-reverse-v4.svg",
+      "viewBox": "0 0 8400.113 5733.643"
+    }
+  },
+  "sourceSpecifications": {
+    "wordmark": {
+      "font": "Atkinson Hyperlegible Next",
+      "weight": 780,
+      "tracking": "-0.062em",
+      "scaleX": 1.34
+    },
+    "tagline": {
+      "font": "IBM Plex Mono",
+      "weight": 700,
+      "tracking": "-0.035em"
     }
   }
 }

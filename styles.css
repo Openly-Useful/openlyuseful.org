@@ -17,7 +17,7 @@ nav a:hover { color:var(--green-dark); }
 .hero-kicker,.section-label,.project-eyebrow { font-family:var(--ou-font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.11em; }
 .hero-kicker { display:flex; align-items:center; gap:10px; color:var(--green-dark); }
 .hero-kicker span { width:7px; height:7px; background:var(--green); border-radius:50%; }
-.hero-lockup { width:100%; margin:42px 0 56px; }
+.hero-lockup { width:100%; margin:42px 0 56px; display:grid; place-items:center; }
 .hero-bottom { display:grid; grid-template-columns:1fr 1fr; align-items:end; gap:40px; padding-left:18%; }
 .hero-bottom>p { margin:0; max-width:540px; font-size:clamp(20px,2.1vw,29px); line-height:1.35; letter-spacing:-.03em; }
 .hero-actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
