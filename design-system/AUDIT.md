@@ -10,7 +10,7 @@ Scope: public landing page, identity assets, design-system specimen, and impleme
 
 The original site had a coherent editorial direction but functioned as one bespoke composition. It used six page-level color variables, arbitrary typography and spacing values, a text glyph as the logo, undocumented component states, no public identity rules, and no governance or migration path.
 
-Version 2.0.0 retains the semantic token layer and introduces the approved O/U Open Monitor identity, deterministic institutional and character SVGs, a responsive full lockup, Monitorfolk art direction, and a social-preview asset aligned to the live brand. Legacy aliases and retired Open Shell assets remain temporarily to preserve compatibility and history.
+Version 2.0.1 retains the semantic token layer and introduces the approved O/U Open Monitor identity, deterministic institutional and character SVGs, a responsive full lockup, Monitorfolk art direction, and a social-preview asset aligned to the live brand. Legacy aliases and retired Open Shell assets remain temporarily to preserve compatibility and history.
 
 ## Naming consistency
 
@@ -18,6 +18,7 @@ Version 2.0.0 retains the semantic token layer and introduces the approved O/U O
 |---|---|---|
 | Generic page aliases (`--green`, `--blue`) | All surfaces | Added `--ou-{category}-{role}-{step}` tokens; retained aliases only for migration. |
 | Ambiguous C-shaped mark | Header, footer, social identity | Replaced with the canonical O/U Open Monitor SVG family. |
+| Uneven eye/U spacing in generated raster art | Brand board, social preview, institutional and character variants | Rebuilt every official appearance from shared SVG geometry and added an automated geometry regression check. |
 | Mixed label conventions | Kicker, section label, eyebrow | Defined technical label treatment and semantic usage. |
 | Undocumented state names | Project statuses | Standardized Open, In progress, Merged, Needs help, Archived. |
 
@@ -60,4 +61,4 @@ Version 2.0.0 retains the semantic token layer and introduces the approved O/U O
 2. Implement form and notice specimens when the website gains interactive workflows.
 3. Self-host Atkinson Hyperlegible Next and IBM Plex Mono only if font-file maintenance is accepted; current system fallbacks avoid third-party requests.
 
-These are documented evolution items, not release blockers for 1.0.0.
+These are documented evolution items, not release blockers for 2.0.1.

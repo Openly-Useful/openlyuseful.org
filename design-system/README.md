@@ -1,6 +1,6 @@
 # Openly Useful Design System
 
-Version **2.0.0** — the public, implementation-ready expression of Openly Useful.
+Version **2.0.1** — the public, implementation-ready expression of Openly Useful.
 
 ## Brand idea
 
@@ -34,6 +34,8 @@ The institutional form has no antenna. The character form adds one antenna only 
 | Cursor trail | Supporting pattern | Repeat a short cursor or O/U motif at low contrast in one direction. Never make a decorative confetti field. |
 
 Minimum mark size is 20 CSS pixels or 6 mm. Use the green institutional mark on Shell surfaces and the reverse mark on Ink or Terminal surfaces. Preserve the O/U relationship, inner counter, cursor eyes, and square-ended U exactly.
+
+The supplied favicon is optically approved at 16 CSS pixels. In the canonical 64-unit grid, the eye and U stem centerlines are x = 24 and x = 40, the vertical eye/U gap is four units, and the lower U/O gap is 2.5 units. The U is a filled path so stroke-cap behavior cannot collapse either gap. Repository validation enforces this geometry across every active face asset.
 
 ## Color
 
