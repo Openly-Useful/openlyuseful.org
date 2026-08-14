@@ -1,6 +1,6 @@
 # Openly Useful Design System
 
-Version **3.0.1** — the public, implementation-ready expression of Openly Useful.
+Version **3.1.0** — the public, implementation-ready expression of Openly Useful.
 
 ## Brand idea
 
@@ -29,13 +29,14 @@ The institutional form has no antenna. The character form adds one antenna only 
 | Open Monitor mark | Primary symbol | Use the supplied institutional SVG; do not redraw, rotate, outline, or place inside another container. |
 | Wordmark | Primary name | Use the supplied v4 outlined asset. Its Atkinson Hyperlegible Next 780 source treatment, `-.062em` tracking, and 1.34 width scale are frozen as paths. |
 | Lockup | Mark + wordmark (+ tagline when stacked) | Use only the complete v4 horizontal or stacked SVG; surface-specific composition or re-typesetting is prohibited. |
+| Profile mark | Organization avatar and application icon | Use only `ou-profile-mark-v1.svg` or its supplied PNG sizes. It embeds the institutional paths unchanged on Shell. |
 | Character mark | Expressive symbol | Add the supplied antenna only in editorial, community, onboarding, or illustration contexts. |
 | Monitorfolk | Character language | Rounded monitor-headed helpers with the exact O/U face. Show cooperation and useful work, never heroic posing. |
 | Cursor trail | Supporting pattern | Repeat a short cursor or O/U motif at low contrast in one direction. Never make a decorative confetti field. |
 
 Minimum mark size is 20 CSS pixels or 6 mm. Use the green institutional mark on Shell surfaces and the reverse mark on Ink or Terminal surfaces. Preserve the O/U relationship, inner counter, cursor eyes, and square-ended U exactly.
 
-The supplied favicon is optically approved at 16 CSS pixels. In the canonical 64-unit grid, the eye and U stem centerlines are x = 24 and x = 40, the vertical eye/U gap is four units, and the lower U/O gap is 2.5 units. The U is a filled path so stroke-cap behavior cannot collapse either gap. Repository validation enforces this geometry across every active face asset.
+The profile mark is optically approved from favicon size through organization-avatar size. In the canonical 64-unit grid, the eye and U stem centerlines are x = 24 and x = 40, the vertical eye/U gap is four units, and the lower U/O gap is 2.5 units. The U is a filled path so stroke-cap behavior cannot collapse either gap. Repository validation proves the profile master embeds the institutional paths unchanged.
 
 ## Color
 
@@ -77,6 +78,7 @@ The Brand lockup is the only supported way to combine the Open Monitor symbol wi
 | `stacked board` | Fixed 1536 × 1024 production brand board |
 | `stacked social` | Fixed 1200 × 630 social-preview composition |
 | `reverse` | Horizontal lockup on Ink or Terminal surfaces |
+| `profile` | GitHub organization, browser tab, touch icon, or installed web app |
 
 ### Properties
 
@@ -116,6 +118,18 @@ The Brand lockup is the only supported way to combine the Open Monitor symbol wi
 | Use the reverse asset on dark surfaces | Apply filters or recolor the institutional SVG |
 
 See [`ARCHITECTURE.md`](ARCHITECTURE.md) for system boundaries, validation flow, trade-offs, and the growth path.
+
+## Media and export system
+
+Platform layouts are a governed output of the identity system, not a second identity system. The complete kit lives in `/brand/social`, `/brand/press`, and `/brand/templates`, with a public download index at `/brand/media-kit.html`.
+
+- Use `/brand/ou-profile-mark-v1.png` as the universal organization/profile image. Never create a platform-specific avatar.
+- Use `/brand/social/manifest.json` to select the upload file and read its `[x, y, width, height]` safe area.
+- Use the supplied PNG for uploads and retain the same-size SVG as the editable source.
+- Edit `scripts/build_brand_exports.py` to create a named campaign derivative; do not hand-edit embedded logo paths.
+- Run `scripts/validate_brand_exports.py` before release. It verifies dimensions, file formats, file-size limits, hashes, safe-area bounds, canonical source hashes, and exact embedded logo path equality.
+
+The export kit covers Open Graph, GitHub, LinkedIn, X, Mastodon, Bluesky, Instagram, YouTube, press/partner use, presentations, US Letter documents, and email signatures. Platform requirements were verified on 2026-08-14 and are linked from `/brand/social/README.md`.
 
 ## Layout, shape, and material
 

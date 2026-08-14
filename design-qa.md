@@ -2,8 +2,8 @@
 
 QA date: 2026-08-14
 
-System version: 3.0.1
-Scope: homepage, public design-system specimen, institutional/reverse/character marks, complete lockups, production brand board, social card, favicon, Monitorfolk, typography, cache behavior, and compatibility routes.
+System version: 3.1.0
+Scope: homepage, public design-system specimen, institutional/reverse/character marks, complete lockups, production brand board, social card, profile/avatar family, Monitorfolk, typography, cache behavior, and compatibility routes.
 
 ## Source and implementation inputs
 
@@ -21,8 +21,10 @@ Scope: homepage, public design-system specimen, institutional/reverse/character 
 |---|---|---|---|
 | P0 | The same symbol was paired with independently defined wordmarks across the homepage, board, social card, header, and footer. Weight, tracking, width, spacing, tagline weight, scale ratio, and alignment differed. | Introduced governed horizontal and stacked lockup variants. | Every active mark/name pairing uses one of the two approved compositions. |
 | P0 | Version 3.0.0 assigned the same `780` token everywhere but left the wordmark as live text. At 18 px, browser hinting and pixel snapping made the header look heavier than the 88 px hero. | Converted the canonical name and tagline to outlines and precomposed the complete horizontal and stacked SVGs. Runtime CSS now scales the whole asset and cannot typeset, space, or transform its children. | Validation proves that the same 13 wordmark paths are embedded in every light/reverse horizontal and stacked master; none contains an SVG `<text>` element or live visual logo text. |
+| P0 | GitHub still displayed its generated purple identicon while browser/application icons used a separate transparent asset. | Created one Shell-backed profile master from the exact institutional SVG paths and derived 1024, 512, 192, and 180 px PNGs from it. | Geometry validation compares every profile path and attribute to the institutional master; raster validation enforces every published dimension. |
+| P1 | Small headless-browser exports can silently crop an SVG because Chromium enforces a larger minimum window than the requested screenshot. | Added a forced-square raster source and generate the PNGs through an explicit browser viewport. | Validation now samples Shell, outer O, counter, eye, and U-stem pixels at canonical 64-grid coordinates, so a dimensionally correct crop cannot pass. |
 | P1 | The declared brand fonts were not delivered, so the wordmark changed with the viewer's installed fonts and operating system. | Self-hosted the official Atkinson Hyperlegible Next and IBM Plex Mono variable WOFF2 files with their OFL licenses. | Browser font checks return `true` for both families on every verified surface. |
-| P1 | Unversioned SVG and raster paths could mix a newly deployed page with a stale cached asset. | Published v4 outlined lockups, `brandkit-open-monitor-v4.png`, and `og-v6.png`; redirected historical routes to current equivalents. | Active surfaces contain no deprecated routes; compatibility redirects are release-validated. |
+| P1 | Unversioned SVG and raster paths could mix a newly deployed page with a stale cached asset. | Published v4 outlined lockups, `brandkit-open-monitor-v5.png`, and `og-v6.png`; redirected historical routes to current equivalents. | Active surfaces contain no deprecated routes; compatibility redirects are release-validated. |
 | P1 | Old Open Shell and early social assets were treated as required top-level production files. | Moved them to `brand/archive/pre-v3/` and removed them from the active asset contract. | The manifest contains only current assets; validation rejects archived paths in active surfaces. |
 | P1 | The homepage Monitorfolk face was aligned by eye but did not reuse the exact canonical face proportions; its square SVG was also stretched to a non-square rendered box. | Replaced the custom face with a uniformly scaled canonical eye/U group and enforced `height:auto` wherever the character renders. | Geometry validation proves the same source coordinates and path; browser QA reports a square, undistorted render. |
 | P2 | The design-system page documented a lockup but did not expose a reusable implementation contract. | Added a live component specimen, variants, properties, states, accessibility rules, usage guidance, and architecture document. | Public specimen renders four governed lockups and exact 16/20/34/64 px optical samples. |
@@ -44,6 +46,7 @@ Desktop homepage and board scale the same stacked SVG `viewBox`. Browser roundin
 | Surface | Result | Evidence |
 |---|---|---|
 | Symbol geometry | Passed | Primary, reverse, character, favicon, and Monitorfolk geometry assertions pass. |
+| Profile and application identity | Passed | GitHub upload, browser favicon, Apple touch icon, and web-app icons all derive from `ou-profile-mark-v1.svg`. |
 | Complete lockup | Passed | Every active name/mark pairing scales a complete v4 SVG; no page contains lockup children to redefine. |
 | Typography | Passed | Logo weight, tracking, and optical width are fixed paths. Self-hosted fonts remain available for interface typography and reproducible generation. |
 | Canonical copy | Passed | Manifest, homepage, board, social card, and specimen use the exact name and tagline. |
