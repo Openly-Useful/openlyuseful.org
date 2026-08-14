@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Openly Useful Brand Kit</title>
+  <link rel="icon" href="/favicon-v3.svg" type="image/svg+xml" sizes="any">
   <link rel="stylesheet" href="/design-system/tokens.css">
   <link rel="stylesheet" href="/design-system/brand.css">
   <style>
@@ -13,7 +14,7 @@
     body { background:var(--paper); color:var(--ink); font-family:var(--sans); }
     .board { width:1536px; height:1024px; display:grid; grid-template-columns:832px 704px; background-color:var(--paper); background-image:radial-gradient(circle at 18% 22%,rgb(23 26 24 / .04) 0 .55px,transparent .75px),radial-gradient(circle at 78% 68%,rgb(36 122 75 / .025) 0 .45px,transparent .7px); background-size:13px 15px,17px 19px; }
     .system { height:1024px; padding:60px 56px 24px; display:flex; flex-direction:column; }
-    .board-hero { width:100%; }
+    .board-hero { width:100%; display:grid; place-items:center; }
     .rule { height:1px; margin:24px 0 20px; background:var(--line); }
     .identity-row { display:grid; grid-template-columns:1.05fr 1fr; gap:24px; min-height:214px; }
     figure { margin:0; }
@@ -47,7 +48,7 @@
 <body>
   <main class="board">
     <section class="system" aria-label="Openly Useful identity system">
-      <header class="board-hero ou-lockup ou-lockup--stacked ou-lockup--board"><img class="ou-lockup__mark" src="/brand/ou-monitor-mark-v3.svg" alt=""><h1 class="ou-lockup__wordmark">Openly Useful</h1><p class="ou-lockup__tagline">Useful things, openly made.</p></header>
+      <header class="board-hero"><img class="ou-lockup ou-lockup--stacked ou-lockup--board" src="/brand/ou-lockup-stacked-v4.svg" alt="Openly Useful — Useful things, openly made." width="8400" height="5734"></header>
       <div class="rule"></div>
       <div class="identity-row">
         <figure class="grid-proof"><div class="grid-wrap"><img src="/brand/ou-monitor-mark-v3.svg" alt=""></div><figcaption><span class="eyebrow">Canonical 64-unit grid</span><h2>One face.<br>One geometry.</h2><p>Eye centers: 24 / 40<br>Eye gap: 4 units<br>Lower counter: 2.5 units</p></figcaption></figure>
@@ -57,7 +58,7 @@
         <div class="sizes" aria-label="Production logo sizes"><figure class="size" style="--size:16px"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>16 px</figcaption></figure><figure class="size" style="--size:20px"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>20 px</figcaption></figure><figure class="size" style="--size:34px"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>34 px</figcaption></figure><figure class="size" style="--size:64px"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>64 px</figcaption></figure></div>
         <div class="terminal"><div class="dots"><i></i><i></i><i></i></div><code>$ openly-useful --share</code></div>
       </div>
-      <p class="caption"><span>One mark · one wordmark · one tagline</span><span>Design system 3.0.0</span></p>
+      <p class="caption"><span>One mark · one wordmark · one tagline</span><span>Design system 3.0.1</span></p>
     </section>
     <figure class="art"><img src="/brand/monitorfolk-workshop.png" alt="Two friendly retro-future robots sharing a README at a community workstation"></figure>
   </main>

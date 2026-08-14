@@ -1,6 +1,6 @@
 # Openly Useful Design System
 
-Version **3.0.0** — the public, implementation-ready expression of Openly Useful.
+Version **3.0.1** — the public, implementation-ready expression of Openly Useful.
 
 ## Brand idea
 
@@ -27,8 +27,8 @@ The institutional form has no antenna. The character form adds one antenna only 
 | Element | Role | Rule |
 |---|---|---|
 | Open Monitor mark | Primary symbol | Use the supplied institutional SVG; do not redraw, rotate, outline, or place inside another container. |
-| Wordmark | Primary name | Use the shared lockup component. The canonical treatment is self-hosted Atkinson Hyperlegible Next at weight 780, `-.062em` tracking, `.9` leading, and the documented optical width. |
-| Lockup | Mark + wordmark (+ tagline when stacked) | Use only the governed horizontal or stacked composition from `brand.css`; surface-specific re-typesetting is prohibited. |
+| Wordmark | Primary name | Use the supplied v4 outlined asset. Its Atkinson Hyperlegible Next 780 source treatment, `-.062em` tracking, and 1.34 width scale are frozen as paths. |
+| Lockup | Mark + wordmark (+ tagline when stacked) | Use only the complete v4 horizontal or stacked SVG; surface-specific composition or re-typesetting is prohibited. |
 | Character mark | Expressive symbol | Add the supplied antenna only in editorial, community, onboarding, or illustration contexts. |
 | Monitorfolk | Character language | Rounded monitor-headed helpers with the exact O/U face. Show cooperation and useful work, never heroic posing. |
 | Cursor trail | Supporting pattern | Repeat a short cursor or O/U motif at low contrast in one direction. Never make a decorative confetti field. |
@@ -60,13 +60,13 @@ Do not rely on color alone for status. Terminal green is not decoration; reserve
 - Body measure: 45–72 characters. Minimum body size: 16 px. Labels: 12 px minimum when essential.
 - Never simulate nostalgia with pixel fonts, all-caps paragraphs, CRT distortion, or low-contrast green-on-black body text.
 
-The website self-hosts variable WOFF2 files for Atkinson Hyperlegible Next and IBM Plex Mono under their included OFL licenses. Consuming Openly Useful products should use the supplied files so the wordmark and tagline do not vary by operating system.
+The website self-hosts variable WOFF2 files for Atkinson Hyperlegible Next and IBM Plex Mono under their included OFL licenses. They support interface typography and reproducible asset generation. Consuming products must use the supplied outlined SVGs for the logo, so runtime font hinting, pixel snapping, loading, and operating-system differences cannot alter the identity.
 
 ## Component: Brand lockup
 
 ### Description
 
-The Brand lockup is the only supported way to combine the Open Monitor symbol with the organization name and, where appropriate, the tagline. Its internal typography and spacing come from `tokens.css` and `brand.css` and may not be overridden by a page.
+The Brand lockup is the only supported way to combine the Open Monitor symbol with the organization name and, where appropriate, the tagline. Each composition is one SVG master containing fixed outlines and clear space. `brand.css` controls only the size of that complete asset.
 
 ### Variants
 
@@ -84,9 +84,9 @@ The Brand lockup is the only supported way to combine the Open Monitor symbol wi
 |---|---|---|---|
 | Composition class | enum | `horizontal` | Chooses a documented layout; arbitrary compositions are not supported |
 | Scale class | enum | surface-defined | Chooses `display`, `board`, or `social` only for stacked lockups |
-| Mark source | URL | manifest institutional asset | Uses the reverse manifest asset only on a reverse surface |
-| Wordmark | fixed string | `Openly Useful` | Must match `brand/manifest.json` |
-| Tagline | fixed string | omitted | Required for stacked identity surfaces; exact copy only |
+| Asset source | URL | manifest horizontal asset | Uses the complete reverse asset only on a reverse surface |
+| Accessible name | fixed string | `Openly Useful` | Must match `brand/manifest.json` |
+| Tagline alternative | fixed string | omitted | Required when the stacked lockup is informative; exact copy only |
 
 ### States
 
@@ -96,22 +96,23 @@ The Brand lockup is the only supported way to combine the Open Monitor symbol wi
 | Hover | No internal geometry change | A linked lockup may inherit the surrounding link focus/hover treatment |
 | Focus | Two-color system focus ring around the whole link | Keyboard-visible |
 | Reverse | Shell mark and wordmark on Ink | Static identity |
-| Loading | System font fallback may appear briefly | WOFF2 uses `font-display: swap`; layout ratios remain governed |
+| Loading | Complete vector loads as one image | No font swap or partially assembled identity is possible |
 
 ### Accessibility
 
 - Linked lockups expose the accessible name “Openly Useful home.”
-- The symbol uses empty alternative text when adjacent to the visible wordmark.
-- The tagline remains real text on web surfaces.
+- Linked lockup images use empty alternative text because the link supplies the accessible name.
+- The homepage heading and tagline remain present as visually hidden semantic text while the complete visual lockup is decorative.
+- Informative specimen and export images provide the exact name and tagline in alternative text.
 - The complete linked lockup is one focus target.
 
 ### Do and don't
 
 | Do | Don't |
 |---|---|
-| Use `ou-lockup` and a documented composition | Rebuild the wordmark with page-specific CSS |
+| Use `ou-lockup` on a complete v4 composition asset | Rebuild the mark, wordmark, or tagline from separate children |
 | Use versioned assets from the manifest | Reference archived or unversioned logos |
-| Scale through the documented surface class | Change child font size, tracking, transform, or margins |
+| Scale the whole asset through the documented surface class | Change internal paths, tracking, transform, or clear space |
 | Use the reverse asset on dark surfaces | Apply filters or recolor the institutional SVG |
 
 See [`ARCHITECTURE.md`](ARCHITECTURE.md) for system boundaries, validation flow, trade-offs, and the growth path.

@@ -51,7 +51,7 @@ def main() -> None:
         "index.html",
         "styles.css",
         "favicon-v3.svg",
-        "og-v5.png",
+        "og-v6.png",
         "robots.txt",
         "sitemap.xml",
         "vercel.json",
@@ -61,7 +61,15 @@ def main() -> None:
         "brand/ou-monitor-reverse-v3.svg",
         "brand/ou-monitor-character-v3.svg",
         "brand/ou-monitor-bot-v3.svg",
-        "brand/brandkit-open-monitor-v3.png",
+        "brand/ou-wordmark-v4.svg",
+        "brand/ou-wordmark-reverse-v4.svg",
+        "brand/ou-tagline-v4.svg",
+        "brand/ou-tagline-reverse-v4.svg",
+        "brand/ou-lockup-horizontal-v4.svg",
+        "brand/ou-lockup-horizontal-reverse-v4.svg",
+        "brand/ou-lockup-stacked-v4.svg",
+        "brand/ou-lockup-stacked-reverse-v4.svg",
+        "brand/brandkit-open-monitor-v4.png",
         "brand/monitorfolk-workshop.png",
         "brand/brandkit.html",
         "brand/og-card.html",
@@ -70,6 +78,8 @@ def main() -> None:
         "design-system/index.html",
         "design-system/brand.css",
         "design-system/tokens.css",
+        "scripts/build_brand_vectors.py",
+        "scripts/requirements-vector.txt",
     ]
     missing = [name for name in required if not (ROOT / name).is_file()]
     if missing:
@@ -82,9 +92,10 @@ def main() -> None:
     assert {"top", "projects", "principles"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
-    assert "https://openlyuseful.org/og-v5.png" in html
+    assert "https://openlyuseful.org/og-v6.png" in html
     assert "/design-system" in parser.links
-    assert "/brand/ou-monitor-mark-v3.svg" in html
+    assert "/brand/ou-lockup-horizontal-v4.svg" in html
+    assert "/brand/ou-lockup-stacked-v4.svg" in html
     assert "/brand/ou-monitor-bot-v3.svg" in html
     assert "open-shell" not in html
 
@@ -93,7 +104,7 @@ def main() -> None:
     system_parser.feed(system_html)
     assert system_parser.title == "Design System — Openly Useful"
     assert "The Open Monitor" in system_html
-    assert "/brand/brandkit-open-monitor-v3.png" in system_html
+    assert "/brand/brandkit-open-monitor-v4.png" in system_html
     assert "/brand/ou-monitor-character-v3.svg" in system_html
     assert "Comfortable sharing" in system_html
 
@@ -114,19 +125,20 @@ def main() -> None:
     ]:
         assert token in tokens
 
-    board = ROOT / "brand/brandkit-open-monitor-v3.png"
+    board = ROOT / "brand/brandkit-open-monitor-v4.png"
     assert board.stat().st_size > 100_000
     assert png_dimensions(board) == (1536, 1024)
     assert png_dimensions(ROOT / "brand/monitorfolk-workshop.png") == (704, 1024)
-    assert png_dimensions(ROOT / "og-v5.png") == (1200, 630)
+    assert png_dimensions(ROOT / "og-v6.png") == (1200, 630)
 
     board_source = (ROOT / "brand/brandkit.html").read_text(encoding="utf-8")
-    assert board_source.count("/brand/ou-monitor-mark-v3.svg") == 7
+    assert board_source.count("/brand/ou-monitor-mark-v3.svg") == 6
+    assert board_source.count("/brand/ou-lockup-stacked-v4.svg") == 1
     assert board_source.count("/brand/ou-monitor-character-v3.svg") == 1
     assert "brandkit-open-monitor-source-tmp" not in board_source
 
     social_source = (ROOT / "brand/og-card.html").read_text(encoding="utf-8")
-    assert social_source.count("/brand/ou-monitor-mark-v3.svg") == 1
+    assert social_source.count("/brand/ou-lockup-stacked-v4.svg") == 1
     print("Validated Openly Useful landing page")
 
 
