@@ -6,18 +6,18 @@ Scope: public landing page, identity assets, design-system specimen, and impleme
 ## Summary
 
 **Baseline components reviewed:** 9 | **Baseline issues found:** 18 | **Baseline score:** 48/100  
-**Post-system score:** 94/100
+**Post-system score:** 96/100
 
 The original site had a coherent editorial direction but functioned as one bespoke composition. It used six page-level color variables, arbitrary typography and spacing values, a text glyph as the logo, undocumented component states, no public identity rules, and no governance or migration path.
 
-Version 1.0.0 introduces a semantic token layer, reproducible SVG identity assets, documented components and patterns, an accessibility baseline, a public specimen, character art direction, brand voice, and system governance. Legacy aliases remain temporarily to avoid a breaking site rewrite.
+Version 2.0.0 retains the semantic token layer and introduces the approved O/U Open Monitor identity, deterministic institutional and character SVGs, a responsive full lockup, Monitorfolk art direction, and a social-preview asset aligned to the live brand. Legacy aliases and retired Open Shell assets remain temporarily to preserve compatibility and history.
 
 ## Naming consistency
 
 | Issue | Components | Resolution |
 |---|---|---|
 | Generic page aliases (`--green`, `--blue`) | All surfaces | Added `--ou-{category}-{role}-{step}` tokens; retained aliases only for migration. |
-| Glyph-based mark (`[`) | Header, footer, social identity | Replaced with canonical Open Shell SVG assets. |
+| Ambiguous C-shaped mark | Header, footer, social identity | Replaced with the canonical O/U Open Monitor SVG family. |
 | Mixed label conventions | Kicker, section label, eyebrow | Defined technical label treatment and semantic usage. |
 | Undocumented state names | Project statuses | Standardized Open, In progress, Merged, Needs help, Archived. |
 
@@ -44,7 +44,7 @@ Version 1.0.0 introduces a semantic token layer, reproducible SVG identity asset
 | Notice | Static/dynamic | Info, success, warning, danger | Live-region rules | Specification only | 8/10 |
 | Terminal panel | Default, focus/copy guidance | Command/status | Real text, wrapping, contrast | Complete | 9/10 |
 | Header/navigation | Default, hover, current, focus | Desktop/mobile | Skip link, landmark, current page | Implemented | 10/10 |
-| Shellfolk | Decorative/informational guidance | Builder baseline | Empty-alt policy | Complete | 9/10 |
+| Monitorfolk | Decorative/informational guidance | Builder baseline | Empty-alt policy | Complete | 10/10 |
 
 ## Accessibility checks
 
@@ -56,7 +56,7 @@ Version 1.0.0 introduces a semantic token layer, reproducible SVG identity asset
 
 ## Remaining migration work
 
-1. Replace legacy aliases and one-off spacing values as existing page sections are next edited; remove aliases in 2.0.0.
+1. Replace legacy aliases and one-off spacing values as existing page sections are next edited; remove aliases in 3.0.0.
 2. Implement form and notice specimens when the website gains interactive workflows.
 3. Self-host Atkinson Hyperlegible Next and IBM Plex Mono only if font-file maintenance is accepted; current system fallbacks avoid third-party requests.
 

@@ -1,17 +1,18 @@
 # Openly Useful Design System
 
-Version **1.0.0** — the public, implementation-ready expression of Openly Useful.
+Version **2.0.0** — the public, implementation-ready expression of Openly Useful.
 
 ## Brand idea
 
 **Useful things, openly made.** Openly Useful is a comfortable sharing ecosystem for practical public tools. It should feel like entering a well-kept community computer lab: capable equipment, familiar rituals, patient maintainers, and room at the terminal for one more person.
 
-The core metaphor is the **Open Shell**. Its rounded opening bracket is simultaneously:
+The core metaphor is the **Open Monitor**. Its geometry makes three ideas visible at once:
 
-- a Unix shell, where useful work begins;
-- an open doorway, inviting participation;
-- a protective boundary, made safe without being closed;
-- a half-built frame, acknowledging that public work can always improve.
+- an outer **O** for open space, open systems, and the environment around the work;
+- an inner **U** for useful, user, and you;
+- two cursor-like eyes that turn the construction into a friendly monitor face.
+
+The institutional form has no antenna. The character form adds one antenna only when the identity is acting as a guide, helper, or participant.
 
 ## Principles
 
@@ -25,13 +26,14 @@ The core metaphor is the **Open Shell**. Its rounded opening bracket is simultan
 
 | Element | Role | Rule |
 |---|---|---|
-| Open Shell mark | Primary symbol | Use the supplied SVG; do not redraw, rotate, close, outline twice, or place inside a circle. |
-| Wordmark | Primary name | Set “Openly Useful” in the primary sans at 650–720 weight with tight optical tracking. |
+| Open Monitor mark | Primary symbol | Use the supplied institutional SVG; do not redraw, rotate, outline, or place inside another container. |
+| Wordmark | Primary name | Set “Openly Useful” in the primary sans at 720–780 weight with tight optical tracking. |
 | Lockup | Mark + wordmark | Keep one mark-width of clear space on all sides. Mark height equals cap-height plus 20%. |
-| Shellfolk | Character language | Rounded modular helpers derived from the bracket. Show cooperation and useful work, never heroic posing. |
-| Bracket trail | Supporting pattern | Repeat the mark at low contrast in one direction. Never make a decorative confetti field. |
+| Character mark | Expressive symbol | Add the supplied antenna only in editorial, community, onboarding, or illustration contexts. |
+| Monitorfolk | Character language | Rounded monitor-headed helpers with the exact O/U face. Show cooperation and useful work, never heroic posing. |
+| Cursor trail | Supporting pattern | Repeat a short cursor or O/U motif at low contrast in one direction. Never make a decorative confetti field. |
 
-Minimum mark size is 20 CSS pixels or 6 mm. Use the green mark on Shell surfaces and the reverse mark on Ink or Terminal surfaces. The mark is not an alphabetic “C”; always preserve the squared open-side terminals.
+Minimum mark size is 20 CSS pixels or 6 mm. Use the green institutional mark on Shell surfaces and the reverse mark on Ink or Terminal surfaces. Preserve the O/U relationship, inner counter, cursor eyes, and square-ended U exactly.
 
 ## Color
 
@@ -122,9 +124,9 @@ Every active project displays current state, maintainer, last meaningful update,
 
 Name the object, state the consequence, provide a non-destructive exit, and require deliberate confirmation. Never use nostalgia or playful character art inside destructive flows.
 
-## Shellfolk art direction
+## Monitorfolk art direction
 
-Shellfolk are modular maintainers, not mascots pasted onto products. Their square heads, softened joints, and bracket-shaped visors derive directly from the mark. Depict two or more whenever possible: pairing, reviewing, carrying, repairing, or sharing one workstation. Their world uses beige computing hardware, community noticeboards, plants, mugs, paper manuals, and modern accessibility equipment.
+Monitorfolk are modular maintainers, not mascots pasted onto products. Their rounded monitor heads, softened joints, and screen faces derive directly from the O/U mark. Depict two or more whenever possible: pairing, reviewing, carrying, repairing, or sharing one workstation. Their world uses beige computing hardware, community noticeboards, plants, mugs, paper manuals, and modern accessibility equipment.
 
 Avoid penguins, horns, wings, capes, weapons, exaggerated gamer poses, collectible-toy gloss, branded game proportions, or faces that imply gender/race through stereotypes. Nostalgia should come from shared rituals and materials, not copied characters.
 

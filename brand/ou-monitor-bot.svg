@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-labelledby="title desc">
+  <title id="title">Openly Useful monitor helper</title>
+  <desc id="desc">A friendly retro monitor-headed robot carrying a README.</desc>
+  <defs>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="10" stdDeviation="7" flood-color="#171a18" flood-opacity=".14"/></filter>
+  </defs>
+  <ellipse cx="205" cy="389" rx="121" ry="18" fill="#171a18" opacity=".12"/>
+  <g filter="url(#shadow)" stroke="#171a18" stroke-width="6" stroke-linejoin="round">
+    <path d="M210 42V25" fill="none" stroke-linecap="round"/>
+    <circle cx="210" cy="19" r="9" fill="#d89524"/>
+    <rect x="82" y="44" width="256" height="204" rx="72" fill="#f7f3e9"/>
+    <rect x="112" y="73" width="196" height="145" rx="50" fill="#171a18"/>
+    <circle cx="84" cy="143" r="25" fill="#247a4b"/><circle cx="84" cy="143" r="12" fill="#171a18"/>
+    <circle cx="336" cy="143" r="25" fill="#247a4b"/><circle cx="336" cy="143" r="12" fill="#171a18"/>
+    <rect x="157" y="107" width="16" height="25" rx="3" fill="#f7f3e9" stroke="none"/>
+    <rect x="237" y="107" width="16" height="25" rx="3" fill="#f7f3e9" stroke="none"/>
+    <path d="M163 147v10c0 29 17 45 47 45s47-16 47-45v-10" fill="none" stroke="#247a4b" stroke-width="22" stroke-linecap="square"/>
+    <path d="M128 244c18-20 48-31 82-31s64 11 82 31l22 100c-27 22-62 34-104 34s-77-12-104-34l22-100Z" fill="#247a4b"/>
+    <path d="M151 249c16 14 35 21 59 21s43-7 59-21" fill="none" stroke="#3568a8" stroke-width="19" stroke-linecap="round"/>
+    <path d="M105 273 62 310c-14 12-15 31-3 44 12 13 32 14 45 2l43-39" fill="#247a4b" stroke-linecap="round"/>
+    <path d="m295 274 45 39c14 12 16 31 4 44-12 14-32 15-46 3l-46-41" fill="#247a4b" stroke-linecap="round"/>
+    <rect x="138" y="292" width="145" height="98" rx="12" fill="#f7f3e9" transform="rotate(-4 210 341)"/>
+    <path d="m163 322 12 12 20-25" fill="none" stroke="#247a4b" stroke-width="8" stroke-linecap="round"/>
+    <path d="M209 314h48M207 337h53M163 358h92" fill="none" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>
