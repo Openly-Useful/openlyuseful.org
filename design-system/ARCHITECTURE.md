@@ -1,6 +1,6 @@
 # Openly Useful Brand-System Architecture
 
-Version: **3.0.1**
+Version: **3.1.0**
 
 Status: production contract
 
@@ -11,6 +11,7 @@ Status: production contract
 - Render the same institutional symbol, wordmark, and tagline treatment on the homepage, design-system specimen, brand board, social card, favicon, and footer.
 - Support two compositions only: `stacked` for identity moments and `horizontal` for navigation/footer contexts.
 - Support light and reverse color treatments without changing geometry or typography.
+- Use one background-safe institutional profile master for GitHub, browser, touch, and installed-app icons.
 - Keep old public asset URLs working while preventing old visuals from remaining active.
 
 ### Non-functional
@@ -56,7 +57,7 @@ flowchart LR
 | `brand/manifest.json` | Canonical name, tagline, version, asset routes, allowed lockup contexts | Presentation CSS |
 | `design-system/tokens.css` | Lockup sizes, interface typography, color, and spacing values | Internal logo composition |
 | `design-system/brand.css` | Complete-asset sizing and accessibility utility | Logo typography or internal spacing |
-| Versioned lockup SVGs | Symbol, wordmark, tagline, colors, proportions, and clear space | Surface layout |
+| Versioned lockup/profile SVGs | Symbol, wordmark, tagline, colors, proportions, clear space, and profile background | Surface layout |
 | `scripts/build_brand_vectors.py` | Reproducible shaping and outlining from licensed font sources | Runtime identity rendering |
 | Surface styles | Page composition around a complete lockup | Wordmark weight/tracking or internal lockup spacing |
 | Validators | Contract enforcement and migration redirects | Visual design decisions |
@@ -87,10 +88,14 @@ Use for the homepage hero, brand board, and social card. A consuming surface may
 <p class="ou-visually-hidden">Useful things, openly made.</p>
 ```
 
+### Profile mark
+
+Use `brand/ou-profile-mark-v1.svg` for browser metadata and its exact 1024 px PNG derivative for GitHub. The asset owns the Shell background so platform themes cannot change the mark’s counters or contrast.
+
 ## Data and build flow
 
 1. A maintainer changes a licensed font source, source specification, mark, or composition rule.
-2. `scripts/build_brand_vectors.py` shapes the canonical strings and freezes them as paths in the standalone and complete lockup SVGs.
+2. `scripts/build_brand_vectors.py` shapes the canonical strings, freezes complete lockups, and embeds the institutional paths unchanged in the profile master.
 3. Browser-rendered derivatives are regenerated from `brand/brandkit.html` and `brand/og-card.html`.
 4. Geometry validation checks the O/U construction.
 5. Brand-system validation proves that outlined assets contain no live text, every active surface uses a complete master, and historical routes redirect.
@@ -110,6 +115,7 @@ Use for the homepage hero, brand board, and social card. A consuming surface may
 | Decision | Benefit | Cost |
 |---|---|---|
 | Complete outlined SVGs instead of live-text logo children | Exact same paths, spacing, and proportions at every surface; no font hinting or swap | Logo copy is not directly selectable and accessible text must be supplied separately |
+| Shell-backed profile master | One recognizable avatar/icon across GitHub and every browser theme | Background color is intentionally fixed for identity contexts |
 | Shared CSS sizing contract instead of a JavaScript component | Works without JavaScript, renders immediately, simple static hosting | Markup is repeated and therefore must be validated |
 | Self-hosted variable font sources | Reproducible outline generation and consistent interface typography; no third-party request | Adds font assets, licenses, and a small maintainer-only build dependency |
 | Versioned asset filenames | Eliminates mixed-cache brand states | Asset updates require route and redirect changes |

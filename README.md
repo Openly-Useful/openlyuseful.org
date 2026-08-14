@@ -15,6 +15,7 @@ This is a dependency-free static site deployed on Vercel. `openlyuseful.org` is 
 - [`brand/README.md`](brand/README.md) documents the Open Monitor O/U identity, Monitorfolk character language, asset rules, and approved brand-kit board.
 - [`brand/manifest.json`](brand/manifest.json) is the machine-readable identity and asset contract.
 - [`scripts/build_brand_vectors.py`](scripts/build_brand_vectors.py) reproducibly converts the licensed source fonts into the canonical outlined wordmark, tagline, and lockups.
+- [`brand/ou-profile-mark-v1.svg`](brand/ou-profile-mark-v1.svg) is the single institutional source for the GitHub organization avatar, browser favicon, touch icon, and installed-app icons.
 - The live public specimen is available at [`/design-system`](https://openlyuseful.org/design-system).
 
 ## Local preview

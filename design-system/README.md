@@ -1,6 +1,6 @@
 # Openly Useful Design System
 
-Version **3.0.1** — the public, implementation-ready expression of Openly Useful.
+Version **3.1.0** — the public, implementation-ready expression of Openly Useful.
 
 ## Brand idea
 
@@ -29,13 +29,14 @@ The institutional form has no antenna. The character form adds one antenna only 
 | Open Monitor mark | Primary symbol | Use the supplied institutional SVG; do not redraw, rotate, outline, or place inside another container. |
 | Wordmark | Primary name | Use the supplied v4 outlined asset. Its Atkinson Hyperlegible Next 780 source treatment, `-.062em` tracking, and 1.34 width scale are frozen as paths. |
 | Lockup | Mark + wordmark (+ tagline when stacked) | Use only the complete v4 horizontal or stacked SVG; surface-specific composition or re-typesetting is prohibited. |
+| Profile mark | Organization avatar and application icon | Use only `ou-profile-mark-v1.svg` or its supplied PNG sizes. It embeds the institutional paths unchanged on Shell. |
 | Character mark | Expressive symbol | Add the supplied antenna only in editorial, community, onboarding, or illustration contexts. |
 | Monitorfolk | Character language | Rounded monitor-headed helpers with the exact O/U face. Show cooperation and useful work, never heroic posing. |
 | Cursor trail | Supporting pattern | Repeat a short cursor or O/U motif at low contrast in one direction. Never make a decorative confetti field. |
 
 Minimum mark size is 20 CSS pixels or 6 mm. Use the green institutional mark on Shell surfaces and the reverse mark on Ink or Terminal surfaces. Preserve the O/U relationship, inner counter, cursor eyes, and square-ended U exactly.
 
-The supplied favicon is optically approved at 16 CSS pixels. In the canonical 64-unit grid, the eye and U stem centerlines are x = 24 and x = 40, the vertical eye/U gap is four units, and the lower U/O gap is 2.5 units. The U is a filled path so stroke-cap behavior cannot collapse either gap. Repository validation enforces this geometry across every active face asset.
+The profile mark is optically approved from favicon size through organization-avatar size. In the canonical 64-unit grid, the eye and U stem centerlines are x = 24 and x = 40, the vertical eye/U gap is four units, and the lower U/O gap is 2.5 units. The U is a filled path so stroke-cap behavior cannot collapse either gap. Repository validation proves the profile master embeds the institutional paths unchanged.
 
 ## Color
 
@@ -77,6 +78,7 @@ The Brand lockup is the only supported way to combine the Open Monitor symbol wi
 | `stacked board` | Fixed 1536 × 1024 production brand board |
 | `stacked social` | Fixed 1200 × 630 social-preview composition |
 | `reverse` | Horizontal lockup on Ink or Terminal surfaces |
+| `profile` | GitHub organization, browser tab, touch icon, or installed web app |
 
 ### Properties
 

@@ -77,6 +77,23 @@ def validate_bot() -> None:
     assert u_matches[0].get("fill") == GREEN
 
 
+def validate_profile_mark() -> None:
+    canonical = parse("brand/ou-monitor-mark-v3.svg")
+    profile = parse("brand/ou-profile-mark-v1.svg")
+    canonical_shapes = [
+        (element.tag.rsplit("}", 1)[-1], element.attrib)
+        for element in canonical.iter()
+        if element.tag.rsplit("}", 1)[-1] in {"path", "rect"}
+    ]
+    profile_shapes = [
+        (element.tag.rsplit("}", 1)[-1], element.attrib)
+        for element in profile.iter()
+        if element.tag.rsplit("}", 1)[-1] in {"path", "rect"}
+        and not (element.get("width") == "64" and element.get("height") == "64")
+    ]
+    assert profile_shapes == canonical_shapes, "Profile mark must embed the institutional shapes unchanged"
+
+
 def validate_brand_geometry() -> None:
     validate_face(
         "brand/ou-monitor-mark-v3.svg",
@@ -109,6 +126,16 @@ def validate_brand_geometry() -> None:
         u_color=GREEN,
     )
     validate_face(
+        "brand/ou-profile-mark-v1.svg",
+        eye_y=21,
+        u_path=MARK_U,
+        u_top=34,
+        u_bottom=47.5,
+        counter_bottom=50,
+        eye_color=GREEN,
+        u_color=GREEN,
+    )
+    validate_face(
         "brand/ou-monitor-character-v3.svg",
         eye_y=27,
         u_path=CHARACTER_U,
@@ -119,6 +146,7 @@ def validate_brand_geometry() -> None:
         u_color=GREEN,
     )
     validate_bot()
+    validate_profile_mark()
 
 
 def main() -> None:

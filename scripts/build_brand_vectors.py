@@ -242,6 +242,25 @@ def build_lockups(wordmark: Outline, tagline: Outline) -> None:
         )
 
 
+def build_profile_mark() -> None:
+    body = "\n".join(
+        [
+            f'  <rect width="64" height="64" fill="{SHELL}"/>',
+            mark_fragment(GREEN, transform="scale(1)"),
+        ]
+    )
+    write(
+        "brand/ou-profile-mark-v1.svg",
+        svg_document(
+            title="Openly Useful profile mark",
+            description="The canonical Open Monitor mark on a Shell background for organization avatars and application icons.",
+            width=64,
+            height=64,
+            body=body,
+        ),
+    )
+
+
 def main() -> None:
     wordmark = outlined_text(
         ROOT / "design-system/fonts/AtkinsonHyperlegibleNext-variable.woff2",
@@ -298,6 +317,7 @@ def main() -> None:
         ),
     )
     build_lockups(wordmark, tagline)
+    build_profile_mark()
     print("Built outlined Openly Useful brand vectors")
 
 

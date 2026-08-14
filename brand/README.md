@@ -25,11 +25,16 @@ The institutional mark has no antenna. The character form adds one antenna only 
 | `ou-tagline-v4.svg` / `ou-tagline-reverse-v4.svg` | Canonical tagline converted to fixed outlines |
 | `ou-lockup-horizontal-v4.svg` / reverse | Complete navigation/footer composition; never rebuild from children |
 | `ou-lockup-stacked-v4.svg` / reverse | Complete hero/board/social composition; never rebuild from children |
+| `ou-profile-mark-v1.svg` | Canonical institutional mark on Shell for avatars and application icons |
+| `ou-profile-mark-v1.png` | Exact 1024 × 1024 GitHub organization upload derived from the profile SVG |
+| `profile-mark-raster.html` | Forced-square browser source used to generate every profile PNG without crop drift |
 | `brandkit.html` | Reproducible source for the production brand board |
-| `brandkit-open-monitor-v4.png` | Production brand board rendered from the canonical outlined lockup |
+| `brandkit-open-monitor-v5.png` | Production brand board rendered from the canonical outlined lockup |
 | `monitorfolk-workshop.png` | Cropped editorial illustration used by the board and social card |
 | `og-card.html` | Reproducible source for the social card |
-| `/favicon-v3.svg` | Small-size application icon |
+| `/apple-touch-icon-v1.png` | 180 × 180 touch icon derived from the profile master |
+| `/icon-192-v1.png` / `/icon-512-v1.png` | Installable-web-app icons derived from the profile master |
+| `/site.webmanifest` | Browser application metadata pointing only to the canonical icon family |
 | `/og-v6.png` | Social and link-preview card rendered with the canonical outlined lockup |
 
 The manifest and versioned SVG files form the visual source of truth. Each approved lockup is one precomposed, outlined vector: the mark, wordmark, tagline, spacing, and proportions are all frozen in the same `viewBox`. The homepage, design-system page, and both production raster layouts scale those exact paths. The licensed font files remain the reproducible source for rebuilding the outlines and the site’s interface typography; they are no longer used to typeset the visible logo at runtime. The workshop illustration sets the character world and is not a geometry source.
@@ -52,6 +57,7 @@ Monitorfolk are modular maintainers with rounded monitor heads and the exact O/U
 - Minimum digital mark size: 20 px; the supplied favicon is approved at 16 px. Minimum print size: 6 mm.
 - Use Terminal green on Shell; use the reverse mark on Ink or Terminal.
 - Use the institutional mark for organization, navigation, repositories, products, favicons, legal, and formal partnership contexts.
+- Use `ou-profile-mark-v1.svg` or its exact raster derivative for organization avatars and application icons; do not use the character mark or a platform-generated identicon.
 - Use the antenna character mark for editorial, community, onboarding, and illustration contexts only.
 - Do not rotate, stretch, outline, add facial features, move the U, replace the cursor eyes, add gradients, or place the mark inside another container.
 - Do not place Monitorfolk where a system error, warning, or destructive action needs undivided attention.

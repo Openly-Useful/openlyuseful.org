@@ -24,7 +24,9 @@ DEPRECATED_PUBLIC_PATHS = [
     "/brand/shellfolk-builder.svg",
     "/brand/brandkit-open-monitor.png",
     "/brand/brandkit-open-monitor-v3.png",
+    "/brand/brandkit-open-monitor-v4.png",
     "/favicon.svg",
+    "/favicon-v3.svg",
     "/og.png",
     "/og-v2.png",
     "/og-v3.png",
@@ -85,7 +87,7 @@ def validate_shared_outlines() -> None:
 
 def validate_brand_system() -> None:
     manifest = json.loads(read("brand/manifest.json"))
-    assert manifest["brandVersion"] == "3.0.1"
+    assert manifest["brandVersion"] == "3.1.0"
     assert manifest["canonicalName"] == "Openly Useful"
     assert manifest["canonicalTagline"] == "Useful things, openly made."
 
@@ -162,7 +164,16 @@ def validate_brand_system() -> None:
     validate_outlined_svg("brand/ou-lockup-horizontal-reverse-v4.svg", "0 0 354.502 64")
     validate_outlined_svg("brand/ou-lockup-stacked-v4.svg", "0 0 8400.113 5733.643")
     validate_outlined_svg("brand/ou-lockup-stacked-reverse-v4.svg", "0 0 8400.113 5733.643")
+    validate_outlined_svg("brand/ou-profile-mark-v1.svg", "0 0 64 64")
     validate_shared_outlines()
+
+    assert manifest["lockups"]["profile"] == {
+        "contexts": ["GitHub organization", "browser icon", "Apple touch icon", "installed web app"],
+        "asset": "/brand/ou-profile-mark-v1.svg",
+        "uploadAsset": "/brand/ou-profile-mark-v1.png",
+        "viewBox": "0 0 64 64",
+        "background": "#f7f3e9",
+    }
 
     source_specs = manifest["sourceSpecifications"]
     assert source_specs["wordmark"] == {
