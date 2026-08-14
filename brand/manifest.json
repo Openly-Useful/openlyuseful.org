@@ -25,7 +25,34 @@
     "pwaIcon512": "/icon-512-v1.png",
     "webManifest": "/site.webmanifest",
     "brandBoard": "/brand/brandkit-open-monitor-v5.png",
-    "socialCard": "/og-v6.png"
+    "socialCard": "/brand/social/openly-useful-open-graph-1200x630.png"
+  },
+  "exportKits": {
+    "mediaKit": "/brand/media-kit.html",
+    "social": {
+      "version": "1.0.0",
+      "manifest": "/brand/social/manifest.json",
+      "readme": "/brand/social/README.md",
+      "profile": "/brand/ou-profile-mark-v1.png",
+      "openGraph": "/brand/social/openly-useful-open-graph-1200x630.png",
+      "githubPreview": "/brand/social/openly-useful-github-preview-1280x640.png",
+      "communityHeader": "/brand/social/openly-useful-community-header-1500x500.png",
+      "linkedinCover": "/brand/social/openly-useful-linkedin-cover-4200x700.png",
+      "youtubeBanner": "/brand/social/openly-useful-youtube-banner-2560x1440.png"
+    },
+    "press": {
+      "readme": "/brand/press/README.md",
+      "primaryMark": "/brand/press/openly-useful-mark-primary-transparent-1024.png",
+      "reverseMark": "/brand/press/openly-useful-mark-reverse-transparent-1024.png",
+      "primaryLockup": "/brand/press/openly-useful-lockup-primary-transparent-1600x289.png",
+      "reverseLockup": "/brand/press/openly-useful-lockup-reverse-transparent-1600x289.png"
+    },
+    "templates": {
+      "readme": "/brand/templates/README.md",
+      "presentationCover": "/brand/templates/openly-useful-presentation-cover-1920x1080.png",
+      "documentCover": "/brand/templates/openly-useful-document-cover-letter-2550x3300.png",
+      "emailSignature": "/brand/templates/openly-useful-email-signature-1200x240.png"
+    }
   },
   "fonts": {
     "wordmark": "/design-system/fonts/AtkinsonHyperlegibleNext-variable.woff2",

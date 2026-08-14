@@ -7,6 +7,7 @@ from pathlib import Path
 from struct import unpack
 
 from validate_brand_geometry import validate_brand_geometry
+from validate_brand_exports import validate_brand_exports
 from validate_brand_system import validate_brand_system
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -121,6 +122,7 @@ def assert_profile_raster(path: Path, expected_size: int) -> None:
 def main() -> None:
     validate_brand_geometry()
     validate_brand_system()
+    validate_brand_exports()
     required = [
         "index.html",
         "styles.css",
@@ -154,12 +156,15 @@ def main() -> None:
         "brand/monitorfolk-workshop.png",
         "brand/brandkit.html",
         "brand/og-card.html",
+        "brand/media-kit.html",
         "design-system/README.md",
         "design-system/ARCHITECTURE.md",
         "design-system/index.html",
         "design-system/brand.css",
         "design-system/tokens.css",
         "scripts/build_brand_vectors.py",
+        "scripts/build_brand_exports.py",
+        "scripts/validate_brand_exports.py",
         "scripts/requirements-vector.txt",
     ]
     missing = [name for name in required if not (ROOT / name).is_file()]
@@ -173,7 +178,7 @@ def main() -> None:
     assert {"top", "projects", "principles"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
-    assert "https://openlyuseful.org/og-v6.png" in html
+    assert "https://openlyuseful.org/brand/social/openly-useful-open-graph-1200x630.png" in html
     assert "/design-system" in parser.links
     assert "/brand/ou-lockup-horizontal-v4.svg" in html
     assert "/brand/ou-lockup-stacked-v4.svg" in html
@@ -213,7 +218,7 @@ def main() -> None:
     assert board.stat().st_size > 100_000
     assert png_dimensions(board) == (1536, 1024)
     assert png_dimensions(ROOT / "brand/monitorfolk-workshop.png") == (704, 1024)
-    assert png_dimensions(ROOT / "og-v6.png") == (1200, 630)
+    assert png_dimensions(ROOT / "brand/social/openly-useful-open-graph-1200x630.png") == (1200, 630)
     assert_profile_raster(ROOT / "brand/ou-profile-mark-v1.png", 1024)
     assert_profile_raster(ROOT / "apple-touch-icon-v1.png", 180)
     assert_profile_raster(ROOT / "icon-192-v1.png", 192)
@@ -236,6 +241,17 @@ def main() -> None:
 
     social_source = (ROOT / "brand/og-card.html").read_text(encoding="utf-8")
     assert social_source.count("/brand/ou-lockup-stacked-v4.svg") == 1
+
+    media_kit = (ROOT / "brand/media-kit.html").read_text(encoding="utf-8")
+    assert media_kit.count("/brand/ou-lockup-horizontal-v4.svg") == 1
+    assert "/brand/ou-profile-mark-v1.png" in media_kit
+    assert "/brand/social/openly-useful-open-graph-1200x630.png" in media_kit
+    assert "/brand/press/openly-useful-lockup-primary-transparent-1600x289.png" in media_kit
+    assert "/brand/templates/openly-useful-presentation-cover-1920x1080.png" in media_kit
+    assert "One identity. Every useful surface." in media_kit
+
+    sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    assert "https://openlyuseful.org/brand/media-kit.html" in sitemap
     print("Validated Openly Useful landing page")
 
 

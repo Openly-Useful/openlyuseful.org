@@ -31,13 +31,18 @@ The institutional mark has no antenna. The character form adds one antenna only 
 | `brandkit.html` | Reproducible source for the production brand board |
 | `brandkit-open-monitor-v5.png` | Production brand board rendered from the canonical outlined lockup |
 | `monitorfolk-workshop.png` | Cropped editorial illustration used by the board and social card |
-| `og-card.html` | Reproducible source for the social card |
+| `og-card.html` | Previous standalone social-card source retained for compatibility; production exports now come from `scripts/build_brand_exports.py` |
 | `/apple-touch-icon-v1.png` | 180 × 180 touch icon derived from the profile master |
 | `/icon-192-v1.png` / `/icon-512-v1.png` | Installable-web-app icons derived from the profile master |
 | `/site.webmanifest` | Browser application metadata pointing only to the canonical icon family |
-| `/og-v6.png` | Social and link-preview card rendered with the canonical outlined lockup |
+| `social/openly-useful-open-graph-1200x630.png` | Canonical social and link-preview card rendered with the outlined lockup |
+| `social/` | Upload-ready social headers, share cards, posts, video art, exact-size SVG sources, and a platform manifest |
+| `press/` | Transparent primary/reverse mark and horizontal-lockup exports plus press boilerplate |
+| `templates/` | Presentation, document, and email-signature masters |
 
 The manifest and versioned SVG files form the visual source of truth. Each approved lockup is one precomposed, outlined vector: the mark, wordmark, tagline, spacing, and proportions are all frozen in the same `viewBox`. The homepage, design-system page, and both production raster layouts scale those exact paths. The licensed font files remain the reproducible source for rebuilding the outlines and the site’s interface typography; they are no longer used to typeset the visible logo at runtime. The workshop illustration sets the character world and is not a geometry source.
+
+The social, press, and template kits are compositions around those canonical assets, not additional logos. Each SVG source embeds an unchanged versioned mark or lockup inside an outer transform, and `scripts/validate_brand_exports.py` compares the embedded paths and recorded source hashes to the canonical files. Platform-safe areas and upload mappings live in `social/manifest.json`.
 
 Retired pre-v3 assets live under `archive/pre-v3/` for historical reference only. Historical public URLs permanently redirect to the current identity so old links do not break and cannot serve competing branding.
 

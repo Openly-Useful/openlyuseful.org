@@ -12,6 +12,7 @@ ACTIVE_SURFACES = [
     "design-system/index.html",
     "brand/brandkit.html",
     "brand/og-card.html",
+    "brand/media-kit.html",
 ]
 
 DEPRECATED_PUBLIC_PATHS = [
@@ -32,6 +33,7 @@ DEPRECATED_PUBLIC_PATHS = [
     "/og-v3.png",
     "/og-v4.png",
     "/og-v5.png",
+    "/og-v6.png",
 ]
 
 

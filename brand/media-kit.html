@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Media Kit — Openly Useful</title>
+  <meta name="description" content="Official Openly Useful logos, social imagery, press exports, and brand templates.">
+  <link rel="icon" href="/brand/ou-profile-mark-v1.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon-v1.png" sizes="180x180">
+  <meta name="theme-color" content="#f7f3e9">
+  <link rel="stylesheet" href="/design-system/tokens.css">
+  <link rel="stylesheet" href="/design-system/brand.css">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--ou-color-canvas); color: var(--ou-color-text); font: 400 var(--ou-text-20)/var(--ou-leading-body) var(--ou-font-sans); }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:focus-visible { outline: 0; box-shadow: var(--ou-focus-ring); border-radius: var(--ou-radius-1); }
+    img { display: block; max-width: 100%; }
+    .shell { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
+    header { border-bottom: 1px solid var(--ou-color-border); background: var(--ou-color-surface); }
+    nav { min-height: 5rem; display: flex; align-items: center; justify-content: space-between; gap: var(--ou-space-5); }
+    nav ul { display: flex; flex-wrap: wrap; gap: var(--ou-space-4); padding: 0; margin: 0; list-style: none; font: 650 var(--ou-text-10)/1 var(--ou-font-mono); }
+    main { padding-block: var(--ou-space-8) var(--ou-space-10); }
+    .eyebrow { margin: 0 0 var(--ou-space-4); color: var(--ou-color-brand-strong); font: 700 var(--ou-text-10)/1.3 var(--ou-font-mono); letter-spacing: var(--ou-tracking-label); text-transform: uppercase; }
+    h1, h2, h3 { line-height: 1; letter-spacing: var(--ou-tracking-tight); }
+    h1 { max-width: 12ch; margin: 0; font-size: var(--ou-text-60); }
+    h2 { margin: 0 0 var(--ou-space-3); font-size: var(--ou-text-50); }
+    h3 { margin: 0; font-size: var(--ou-text-30); }
+    .lede { max-width: 62ch; margin: var(--ou-space-5) 0 0; color: var(--ou-color-text-muted); font-size: var(--ou-text-30); }
+    .section { padding-top: var(--ou-space-9); }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 32rem); gap: var(--ou-space-7); align-items: end; margin-bottom: var(--ou-space-6); }
+    .section-head p { margin: 0; color: var(--ou-color-text-muted); }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ou-space-5); }
+    .card { overflow: hidden; border: 1px solid var(--ou-color-border); border-radius: var(--ou-radius-2); background: var(--ou-color-surface); box-shadow: var(--ou-shadow-1); }
+    .preview { min-height: 18rem; display: grid; place-items: center; padding: var(--ou-space-5); background: var(--ou-color-shell-100); }
+    .preview img { max-height: 28rem; object-fit: contain; }
+    .preview.dark { background: var(--ou-color-ink-900); }
+    .meta { padding: var(--ou-space-5); display: grid; gap: var(--ou-space-3); }
+    .meta p { margin: 0; color: var(--ou-color-text-muted); }
+    .downloads { display: flex; flex-wrap: wrap; gap: var(--ou-space-3); }
+    .button { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .65rem 1rem; border: 1px solid var(--ou-color-ink-900); border-radius: var(--ou-radius-1); background: var(--ou-color-ink-900); color: var(--ou-color-shell-50); font: 700 var(--ou-text-10)/1 var(--ou-font-mono); text-decoration: none; }
+    .button.secondary { background: transparent; color: var(--ou-color-ink-900); }
+    .profile { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(12rem, 22rem) minmax(0, 1fr); }
+    .profile .preview { min-height: 22rem; }
+    .rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ou-space-4); }
+    .rule { padding: var(--ou-space-5); border-left: 4px solid var(--ou-color-brand); background: var(--ou-color-surface); }
+    .rule strong { display: block; margin-bottom: var(--ou-space-2); }
+    footer { padding-block: var(--ou-space-7); border-top: 1px solid var(--ou-color-border); color: var(--ou-color-text-muted); font: 600 var(--ou-text-10)/1.6 var(--ou-font-mono); }
+    @media (max-width: 760px) {
+      nav { align-items: flex-start; padding-block: var(--ou-space-5); flex-direction: column; }
+      .section-head, .grid, .profile, .rules { grid-template-columns: 1fr; }
+      .profile { grid-column: auto; }
+      .preview { min-height: 12rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="shell" aria-label="Media kit navigation">
+      <a href="/" aria-label="Openly Useful home"><img class="ou-lockup ou-lockup--horizontal" src="/brand/ou-lockup-horizontal-v4.svg" alt="" width="355" height="64"></a>
+      <ul><li><a href="#social">Social</a></li><li><a href="#press">Press</a></li><li><a href="#templates">Templates</a></li><li><a href="/design-system">Design system</a></li></ul>
+    </nav>
+  </header>
+  <main class="shell">
+    <p class="eyebrow">Official media kit · Version 1.0.0</p>
+    <h1>One identity. Every useful surface.</h1>
+    <p class="lede">Approved upload-ready artwork for Openly Useful. Every logo is built from the same locked O+U geometry, with platform-specific space around it—not platform-specific redraws.</p>
+
+    <section class="section" id="social">
+      <div class="section-head"><div><p class="eyebrow">Social identity</p><h2>Profiles and sharing</h2></div><p>Use the canonical profile image everywhere. Choose the matching card or banner below for the surrounding platform surface.</p></div>
+      <div class="grid">
+        <article class="card profile"><div class="preview"><img src="/brand/ou-profile-mark-v1.png" alt="Openly Useful green O and U monitor mark on a warm Shell background" width="1024" height="1024"></div><div class="meta"><h3>Universal profile image</h3><p>GitHub, X, LinkedIn, Mastodon, Bluesky, Instagram, and YouTube. Upload the same 1024 × 1024 master everywhere.</p><div class="downloads"><a class="button" href="/brand/ou-profile-mark-v1.png" download>Download PNG</a><a class="button secondary" href="/brand/ou-profile-mark-v1.svg" download>Download SVG</a></div></div></article>
+        <article class="card"><div class="preview"><img src="/brand/social/openly-useful-open-graph-1200x630.png" alt="Openly Useful identity beside Monitorfolk sharing a README" width="1200" height="630"></div><div class="meta"><h3>Open Graph share card</h3><p>Website links, Slack, Discord, and general sharing · 1200 × 630.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-open-graph-1200x630.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-open-graph-1200x630.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview"><img src="/brand/social/openly-useful-linkedin-share-1200x627.png" alt="Openly Useful LinkedIn share card beside Monitorfolk sharing a README" width="1200" height="627"></div><div class="meta"><h3>LinkedIn link share</h3><p>LinkedIn’s 1.91:1 link-post composition · 1200 × 627.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-linkedin-share-1200x627.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-linkedin-share-1200x627.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview dark"><img src="/brand/social/openly-useful-github-preview-1280x640.png" alt="Dark Openly Useful repository preview card" width="1280" height="640"></div><div class="meta"><h3>GitHub repository preview</h3><p>Reusable repository social preview · 1280 × 640 and under 1 MB.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-github-preview-1280x640.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-github-preview-1280x640.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview dark"><img src="/brand/social/openly-useful-community-header-1500x500.png" alt="Openly Useful dark community profile header" width="1500" height="500"></div><div class="meta"><h3>Community header</h3><p>X, Mastodon, and Bluesky · 1500 × 500 with crop-safe center branding.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-community-header-1500x500.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-community-header-1500x500.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview"><img src="/brand/social/openly-useful-linkedin-cover-4200x700.png" alt="Openly Useful LinkedIn Page cover" width="4200" height="700"></div><div class="meta"><h3>LinkedIn Page cover</h3><p>Centered company-page art · 4200 × 700.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-linkedin-cover-4200x700.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-linkedin-cover-4200x700.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview"><img src="/brand/social/openly-useful-instagram-square-1080x1080.png" alt="Square Openly Useful identity post" width="1080" height="1080"></div><div class="meta"><h3>Square identity post</h3><p>Instagram and LinkedIn · 1080 × 1080.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-instagram-square-1080x1080.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-instagram-square-1080x1080.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview"><img src="/brand/social/openly-useful-instagram-portrait-1080x1350.png" alt="Portrait Openly Useful identity post" width="1080" height="1350"></div><div class="meta"><h3>Portrait identity post</h3><p>Instagram and LinkedIn · 1080 × 1350.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-instagram-portrait-1080x1350.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-instagram-portrait-1080x1350.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview dark"><img src="/brand/social/openly-useful-story-reel-1080x1920.png" alt="Vertical Openly Useful Story and Reel cover" width="1080" height="1920"></div><div class="meta"><h3>Story and Reel cover</h3><p>Stories, Reels, and Shorts · 1080 × 1920.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-story-reel-1080x1920.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-story-reel-1080x1920.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview dark"><img src="/brand/social/openly-useful-youtube-banner-2560x1440.png" alt="Openly Useful YouTube channel banner" width="2560" height="1440"></div><div class="meta"><h3>YouTube channel banner</h3><p>Cross-device channel art · 2560 × 1440 with a 1546 × 423 safe area.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-youtube-banner-2560x1440.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-youtube-banner-2560x1440.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview"><img src="/brand/social/openly-useful-youtube-thumbnail-1280x720.png" alt="Openly Useful evergreen YouTube thumbnail" width="1280" height="720"></div><div class="meta"><h3>YouTube thumbnail</h3><p>Evergreen channel or video cover · 1280 × 720.</p><div class="downloads"><a class="button" href="/brand/social/openly-useful-youtube-thumbnail-1280x720.png" download>Download PNG</a><a class="button secondary" href="/brand/social/openly-useful-youtube-thumbnail-1280x720.svg" download>Source SVG</a></div></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="press">
+      <div class="section-head"><div><p class="eyebrow">Press and partners</p><h2>Transparent exports</h2></div><p>Primary artwork belongs on light surfaces. Reverse artwork belongs on Ink or similarly dark surfaces. Never rely on a platform to recolor the logo.</p></div>
+      <div class="grid">
+        <article class="card"><div class="preview"><img src="/brand/press/openly-useful-mark-primary-transparent-1024.png" alt="Primary Openly Useful institutional mark" width="1024" height="1024"></div><div class="meta"><h3>Primary institutional mark</h3><div class="downloads"><a class="button" href="/brand/press/openly-useful-mark-primary-transparent-1024.png" download>Download PNG</a><a class="button secondary" href="/brand/press/openly-useful-mark-primary-transparent-1024.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview dark"><img src="/brand/press/openly-useful-mark-reverse-transparent-1024.png" alt="Reverse Openly Useful institutional mark" width="1024" height="1024"></div><div class="meta"><h3>Reverse institutional mark</h3><div class="downloads"><a class="button" href="/brand/press/openly-useful-mark-reverse-transparent-1024.png" download>Download PNG</a><a class="button secondary" href="/brand/press/openly-useful-mark-reverse-transparent-1024.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview"><img src="/brand/press/openly-useful-lockup-primary-transparent-1600x289.png" alt="Primary Openly Useful horizontal lockup" width="1600" height="289"></div><div class="meta"><h3>Primary horizontal lockup</h3><div class="downloads"><a class="button" href="/brand/press/openly-useful-lockup-primary-transparent-1600x289.png" download>Download PNG</a><a class="button secondary" href="/brand/press/openly-useful-lockup-primary-transparent-1600x289.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview dark"><img src="/brand/press/openly-useful-lockup-reverse-transparent-1600x289.png" alt="Reverse Openly Useful horizontal lockup" width="1600" height="289"></div><div class="meta"><h3>Reverse horizontal lockup</h3><div class="downloads"><a class="button" href="/brand/press/openly-useful-lockup-reverse-transparent-1600x289.png" download>Download PNG</a><a class="button secondary" href="/brand/press/openly-useful-lockup-reverse-transparent-1600x289.svg" download>Source SVG</a></div></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="templates">
+      <div class="section-head"><div><p class="eyebrow">Reusable templates</p><h2>Work beyond the feed</h2></div><p>Evergreen starting points for presentations, documents, and email—without introducing new logo constructions.</p></div>
+      <div class="grid">
+        <article class="card"><div class="preview"><img src="/brand/templates/openly-useful-presentation-cover-1920x1080.png" alt="Openly Useful presentation title-slide template" width="1920" height="1080"></div><div class="meta"><h3>Presentation cover</h3><p>16:9 title slide · 1920 × 1080.</p><div class="downloads"><a class="button" href="/brand/templates/openly-useful-presentation-cover-1920x1080.png" download>Download PNG</a><a class="button secondary" href="/brand/templates/openly-useful-presentation-cover-1920x1080.svg" download>Source SVG</a></div></div></article>
+        <article class="card"><div class="preview"><img src="/brand/templates/openly-useful-document-cover-letter-2550x3300.png" alt="Openly Useful US Letter document cover" width="2550" height="3300"></div><div class="meta"><h3>Document cover</h3><p>US Letter at 300 ppi · 2550 × 3300.</p><div class="downloads"><a class="button" href="/brand/templates/openly-useful-document-cover-letter-2550x3300.png" download>Download PNG</a><a class="button secondary" href="/brand/templates/openly-useful-document-cover-letter-2550x3300.svg" download>Source SVG</a></div></div></article>
+        <article class="card profile"><div class="preview"><img src="/brand/templates/openly-useful-email-signature-1200x240.png" alt="Openly Useful email signature image" width="1200" height="240"></div><div class="meta"><h3>Email signature image</h3><p>Two-times-density PNG; insert at 600 × 120 CSS pixels and keep contact information as live email text.</p><div class="downloads"><a class="button" href="/brand/templates/openly-useful-email-signature-1200x240.png" download>Download PNG</a><a class="button secondary" href="/brand/templates/openly-useful-email-signature-1200x240.svg" download>Source SVG</a></div></div></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="rules-title"><div class="section-head"><div><p class="eyebrow">Usage rules</p><h2 id="rules-title">Keep it recognizably ours</h2></div><p>The logo itself never adapts to a platform. Only the canvas, safe zone, and surrounding composition adapt.</p></div><div class="rules"><div class="rule"><strong>Use the supplied file.</strong> Do not rebuild the O, U, eyes, wordmark, or tagline.</div><div class="rule"><strong>Protect the clear space.</strong> Keep at least one inner-U width around the institutional mark.</div><div class="rule"><strong>Choose primary or reverse.</strong> Never add outlines, shadows, gradients, masks, or automatic recoloring.</div></div></section>
+  </main>
+  <footer><div class="shell">Openly Useful · Useful things, openly made. · <a href="mailto:hello@openlyuseful.org">hello@openlyuseful.org</a></div></footer>
+</body>
+</html>

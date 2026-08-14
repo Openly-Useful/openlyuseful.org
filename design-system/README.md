@@ -119,6 +119,18 @@ The Brand lockup is the only supported way to combine the Open Monitor symbol wi
 
 See [`ARCHITECTURE.md`](ARCHITECTURE.md) for system boundaries, validation flow, trade-offs, and the growth path.
 
+## Media and export system
+
+Platform layouts are a governed output of the identity system, not a second identity system. The complete kit lives in `/brand/social`, `/brand/press`, and `/brand/templates`, with a public download index at `/brand/media-kit.html`.
+
+- Use `/brand/ou-profile-mark-v1.png` as the universal organization/profile image. Never create a platform-specific avatar.
+- Use `/brand/social/manifest.json` to select the upload file and read its `[x, y, width, height]` safe area.
+- Use the supplied PNG for uploads and retain the same-size SVG as the editable source.
+- Edit `scripts/build_brand_exports.py` to create a named campaign derivative; do not hand-edit embedded logo paths.
+- Run `scripts/validate_brand_exports.py` before release. It verifies dimensions, file formats, file-size limits, hashes, safe-area bounds, canonical source hashes, and exact embedded logo path equality.
+
+The export kit covers Open Graph, GitHub, LinkedIn, X, Mastodon, Bluesky, Instagram, YouTube, press/partner use, presentations, US Letter documents, and email signatures. Platform requirements were verified on 2026-08-14 and are linked from `/brand/social/README.md`.
+
 ## Layout, shape, and material
 
 - Base grid: 4 px. Standard component rhythm: 8 px. Section rhythm: 64–128 px.

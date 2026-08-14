@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "kitVersion": "1.0.0",
+  "brandVersion": "3.1.0",
+  "canonicalProfileAsset": "/brand/ou-profile-mark-v1.png",
+  "canonicalTagline": "Useful things, openly made.",
+  "platformSpecsVerified": "2026-08-14",
+  "exports": [
+    {
+      "key": "openGraph",
+      "source": "/brand/social/openly-useful-open-graph-1200x630.svg",
+      "output": "/brand/social/openly-useful-open-graph-1200x630.png",
+      "width": 1200,
+      "height": 630,
+      "layout": "editorial-share",
+      "platforms": [
+        "Open Graph",
+        "website links",
+        "Slack",
+        "Discord"
+      ],
+      "safe_area": [
+        60,
+        48,
+        1080,
+        534
+      ],
+      "opaque": true,
+      "sha256": "337ee19e7f10e807eb47dc2f0d7db7b2c5ff4db9f463a27f6d47858dbd25b4be"
+    },
+    {
+      "key": "githubPreview",
+      "source": "/brand/social/openly-useful-github-preview-1280x640.svg",
+      "output": "/brand/social/openly-useful-github-preview-1280x640.png",
+      "width": 1280,
+      "height": 640,
+      "layout": "repository-preview",
+      "platforms": [
+        "GitHub repository social preview"
+      ],
+      "safe_area": [
+        64,
+        48,
+        1152,
+        544
+      ],
+      "opaque": true,
+      "sha256": "1bded7186f220b2f0703e101a4210b2fd4760c4133624dc2f7b341b2d1dc0124"
+    },
+    {
+      "key": "linkedinShare",
+      "source": "/brand/social/openly-useful-linkedin-share-1200x627.svg",
+      "output": "/brand/social/openly-useful-linkedin-share-1200x627.png",
+      "width": 1200,
+      "height": 627,
+      "layout": "editorial-share",
+      "platforms": [
+        "LinkedIn link share"
+      ],
+      "safe_area": [
+        60,
+        48,
+        1080,
+        531
+      ],
+      "opaque": true,
+      "sha256": "55e4949885132f7f818f7cf192ca184e82915c9d2b9d6eee23222c634f778b01"
+    },
+    {
+      "key": "communityHeader",
+      "source": "/brand/social/openly-useful-community-header-1500x500.svg",
+      "output": "/brand/social/openly-useful-community-header-1500x500.png",
+      "width": 1500,
+      "height": 500,
+      "layout": "community-header",
+      "platforms": [
+        "X header",
+        "Mastodon header",
+        "Bluesky banner"
+      ],
+      "safe_area": [
+        160,
+        70,
+        1180,
+        360
+      ],
+      "opaque": true,
+      "sha256": "df43f26441557c9c717d6b3525648905cb27d09dfe5033b67ae108aa1f4df251"
+    },
+    {
+      "key": "linkedinCover",
+      "source": "/brand/social/openly-useful-linkedin-cover-4200x700.svg",
+      "output": "/brand/social/openly-useful-linkedin-cover-4200x700.png",
+      "width": 4200,
+      "height": 700,
+      "layout": "company-cover",
+      "platforms": [
+        "LinkedIn Page cover"
+      ],
+      "safe_area": [
+        900,
+        90,
+        2400,
+        520
+      ],
+      "opaque": true,
+      "sha256": "8021995723132a666d70d991bbc9b8101f9b82b00a8df4f50ce8ac1164299188"
+    },
+    {
+      "key": "instagramSquare",
+      "source": "/brand/social/openly-useful-instagram-square-1080x1080.svg",
+      "output": "/brand/social/openly-useful-instagram-square-1080x1080.png",
+      "width": 1080,
+      "height": 1080,
+      "layout": "social-post",
+      "platforms": [
+        "Instagram square",
+        "LinkedIn image post"
+      ],
+      "safe_area": [
+        72,
+        72,
+        936,
+        936
+      ],
+      "opaque": true,
+      "sha256": "1dd512a663f7ebca51e2edc8ab1032edc21e1ecb0ad1eb86e11088611798c299"
+    },
+    {
+      "key": "instagramPortrait",
+      "source": "/brand/social/openly-useful-instagram-portrait-1080x1350.svg",
+      "output": "/brand/social/openly-useful-instagram-portrait-1080x1350.png",
+      "width": 1080,
+      "height": 1350,
+      "layout": "social-portrait",
+      "platforms": [
+        "Instagram portrait",
+        "LinkedIn portrait post"
+      ],
+      "safe_area": [
+        72,
+        90,
+        936,
+        1170
+      ],
+      "opaque": true,
+      "sha256": "e2227a2e9542506fbbeec30f38c5b34f086c85826b4559af1ad54ed4f81c659c"
+    },
+    {
+      "key": "storyReel",
+      "source": "/brand/social/openly-useful-story-reel-1080x1920.svg",
+      "output": "/brand/social/openly-useful-story-reel-1080x1920.png",
+      "width": 1080,
+      "height": 1920,
+      "layout": "story-reel",
+      "platforms": [
+        "Instagram Story",
+        "Instagram Reel cover",
+        "YouTube Short cover"
+      ],
+      "safe_area": [
+        90,
+        250,
+        900,
+        1420
+      ],
+      "opaque": true,
+      "sha256": "aa9520f3182d551c196312ec3dbc951d6017d6d3f7c675a317ff63ad9cc607f6"
+    },
+    {
+      "key": "youtubeBanner",
+      "source": "/brand/social/openly-useful-youtube-banner-2560x1440.svg",
+      "output": "/brand/social/openly-useful-youtube-banner-2560x1440.png",
+      "width": 2560,
+      "height": 1440,
+      "layout": "youtube-banner",
+      "platforms": [
+        "YouTube channel banner"
+      ],
+      "safe_area": [
+        507,
+        508,
+        1546,
+        423
+      ],
+      "opaque": true,
+      "sha256": "4863e532f05b30721a9c1701496ed9af54d29fa31de3cc40bdc5eedb9021850a"
+    },
+    {
+      "key": "youtubeThumbnail",
+      "source": "/brand/social/openly-useful-youtube-thumbnail-1280x720.svg",
+      "output": "/brand/social/openly-useful-youtube-thumbnail-1280x720.png",
+      "width": 1280,
+      "height": 720,
+      "layout": "video-thumbnail",
+      "platforms": [
+        "YouTube thumbnail",
+        "video cover"
+      ],
+      "safe_area": [
+        64,
+        54,
+        1152,
+        612
+      ],
+      "opaque": true,
+      "sha256": "c7946887350a126921a1b8822f1ce4f9f18ea677c987283d07361327c7095ff8"
+    },
+    {
+      "key": "presentationCover",
+      "source": "/brand/templates/openly-useful-presentation-cover-1920x1080.svg",
+      "output": "/brand/templates/openly-useful-presentation-cover-1920x1080.png",
+      "width": 1920,
+      "height": 1080,
+      "layout": "presentation-cover",
+      "platforms": [
+        "presentation title slide",
+        "webinar holding slide"
+      ],
+      "safe_area": [
+        96,
+        86,
+        1728,
+        908
+      ],
+      "opaque": true,
+      "sha256": "f80bde836fa1c23550303a938f0cf61c1a25e29d6b98e70094d49d0a2ed46340"
+    },
+    {
+      "key": "documentCover",
+      "source": "/brand/templates/openly-useful-document-cover-letter-2550x3300.svg",
+      "output": "/brand/templates/openly-useful-document-cover-letter-2550x3300.png",
+      "width": 2550,
+      "height": 3300,
+      "layout": "document-cover",
+      "platforms": [
+        "US Letter document cover",
+        "press packet cover"
+      ],
+      "safe_area": [
+        180,
+        180,
+        2190,
+        2940
+      ],
+      "opaque": true,
+      "sha256": "1ab9d3f65b74705572cf6c409e9657246467dd2313f112f7cf07ee9a37c90db4"
+    },
+    {
+      "key": "emailSignature",
+      "source": "/brand/templates/openly-useful-email-signature-1200x240.svg",
+      "output": "/brand/templates/openly-useful-email-signature-1200x240.png",
+      "width": 1200,
+      "height": 240,
+      "layout": "email-signature",
+      "platforms": [
+        "email signature at 600 \u00d7 120 CSS pixels"
+      ],
+      "safe_area": [
+        24,
+        24,
+        1152,
+        192
+      ],
+      "opaque": true,
+      "sha256": "3693aa93d8f57e77f47b7f78bf52d9574dc0d07a986fade404009c42892ad08f"
+    },
+    {
+      "key": "pressMarkPrimary",
+      "source": "/brand/press/openly-useful-mark-primary-transparent-1024.svg",
+      "output": "/brand/press/openly-useful-mark-primary-transparent-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "layout": "press-mark-primary",
+      "platforms": [
+        "press",
+        "partner",
+        "transparent light-surface mark"
+      ],
+      "safe_area": [
+        128,
+        128,
+        768,
+        768
+      ],
+      "opaque": false,
+      "sha256": "bf85bc578cadfc192c5609a122ca13aec06966a036bd0f8a98961a54ff868efc"
+    },
+    {
+      "key": "pressMarkReverse",
+      "source": "/brand/press/openly-useful-mark-reverse-transparent-1024.svg",
+      "output": "/brand/press/openly-useful-mark-reverse-transparent-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "layout": "press-mark-reverse",
+      "platforms": [
+        "press",
+        "partner",
+        "transparent dark-surface mark"
+      ],
+      "safe_area": [
+        128,
+        128,
+        768,
+        768
+      ],
+      "opaque": false,
+      "sha256": "0de1d0676c24217598daf224f32ea3cb42b313c65f5692dfc8c7904e23592faf"
+    },
+    {
+      "key": "pressLockupPrimary",
+      "source": "/brand/press/openly-useful-lockup-primary-transparent-1600x289.svg",
+      "output": "/brand/press/openly-useful-lockup-primary-transparent-1600x289.png",
+      "width": 1600,
+      "height": 289,
+      "layout": "press-lockup-primary",
+      "platforms": [
+        "press",
+        "partner",
+        "transparent light-surface lockup"
+      ],
+      "safe_area": [
+        40,
+        32,
+        1520,
+        225
+      ],
+      "opaque": false,
+      "sha256": "05bcfb9aca8517091e5f84e6b5e6433a4901fa4c0969f5d3618bf22e69dff3fc"
+    },
+    {
+      "key": "pressLockupReverse",
+      "source": "/brand/press/openly-useful-lockup-reverse-transparent-1600x289.svg",
+      "output": "/brand/press/openly-useful-lockup-reverse-transparent-1600x289.png",
+      "width": 1600,
+      "height": 289,
+      "layout": "press-lockup-reverse",
+      "platforms": [
+        "press",
+        "partner",
+        "transparent dark-surface lockup"
+      ],
+      "safe_area": [
+        40,
+        32,
+        1520,
+        225
+      ],
+      "opaque": false,
+      "sha256": "dfb1e0aa6cfe20d9aa9b4034ba86eacbff8e56c1162ea99bb9e4614c896b7592"
+    }
+  ]
+}
