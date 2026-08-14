@@ -179,6 +179,9 @@ def main() -> None:
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
     assert "https://openlyuseful.org/brand/social/openly-useful-open-graph-1200x630.png" in html
+    assert "https://citewire.org" in parser.links
+    assert "Attribution-first MCP infrastructure" in html
+    assert "CiteWire" not in html
     assert "/design-system" in parser.links
     assert "/brand/ou-lockup-horizontal-v4.svg" in html
     assert "/brand/ou-lockup-stacked-v4.svg" in html
