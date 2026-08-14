@@ -4,6 +4,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from struct import unpack
 
+from validate_brand_geometry import validate_brand_geometry
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -42,6 +44,7 @@ def png_dimensions(path: Path) -> tuple[int, int]:
 
 
 def main() -> None:
+    validate_brand_geometry()
     required = [
         "index.html",
         "styles.css",
@@ -49,6 +52,7 @@ def main() -> None:
         "og.png",
         "og-v2.png",
         "og-v3.png",
+        "og-v4.png",
         "robots.txt",
         "sitemap.xml",
         "vercel.json",
@@ -62,6 +66,9 @@ def main() -> None:
         "brand/ou-monitor-character.svg",
         "brand/ou-monitor-bot.svg",
         "brand/brandkit-open-monitor.png",
+        "brand/monitorfolk-workshop.png",
+        "brand/brandkit.html",
+        "brand/og-card.html",
         "design-system/README.md",
         "design-system/index.html",
         "design-system/tokens.css",
@@ -77,7 +84,7 @@ def main() -> None:
     assert {"top", "projects", "principles"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
-    assert "https://openlyuseful.org/og-v3.png" in html
+    assert "https://openlyuseful.org/og-v4.png" in html
     assert "/design-system" in parser.links
     assert "/brand/ou-monitor-mark.svg" in html
     assert "/brand/ou-monitor-bot.svg" in html
@@ -110,8 +117,18 @@ def main() -> None:
         assert token in tokens
 
     board = ROOT / "brand/brandkit-open-monitor.png"
-    assert board.stat().st_size > 500_000
-    assert png_dimensions(ROOT / "og-v3.png") == (1200, 630)
+    assert board.stat().st_size > 100_000
+    assert png_dimensions(board) == (1536, 1024)
+    assert png_dimensions(ROOT / "brand/monitorfolk-workshop.png") == (704, 1024)
+    assert png_dimensions(ROOT / "og-v4.png") == (1200, 630)
+
+    board_source = (ROOT / "brand/brandkit.html").read_text(encoding="utf-8")
+    assert board_source.count("/brand/ou-monitor-mark.svg") == 7
+    assert board_source.count("/brand/ou-monitor-character.svg") == 1
+    assert "brandkit-open-monitor-source-tmp" not in board_source
+
+    social_source = (ROOT / "brand/og-card.html").read_text(encoding="utf-8")
+    assert social_source.count("/brand/ou-monitor-mark.svg") == 1
     print("Validated Openly Useful landing page")
 
 
