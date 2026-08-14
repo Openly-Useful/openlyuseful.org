@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from html.parser import HTMLParser
 from pathlib import Path
+from struct import unpack
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -32,6 +33,14 @@ class LandingPageParser(HTMLParser):
             self.title += data
 
 
+def png_dimensions(path: Path) -> tuple[int, int]:
+    with path.open("rb") as image:
+        assert image.read(8) == b"\x89PNG\r\n\x1a\n"
+        assert image.read(4) == b"\x00\x00\x00\r"
+        assert image.read(4) == b"IHDR"
+        return unpack(">II", image.read(8))
+
+
 def main() -> None:
     required = [
         "index.html",
@@ -39,6 +48,7 @@ def main() -> None:
         "favicon.svg",
         "og.png",
         "og-v2.png",
+        "og-v3.png",
         "robots.txt",
         "sitemap.xml",
         "vercel.json",
@@ -47,6 +57,11 @@ def main() -> None:
         "brand/open-shell-reverse.svg",
         "brand/shellfolk-builder.svg",
         "brand/brandkit-overview.png",
+        "brand/ou-monitor-mark.svg",
+        "brand/ou-monitor-reverse.svg",
+        "brand/ou-monitor-character.svg",
+        "brand/ou-monitor-bot.svg",
+        "brand/brandkit-open-monitor.png",
         "design-system/README.md",
         "design-system/index.html",
         "design-system/tokens.css",
@@ -62,16 +77,19 @@ def main() -> None:
     assert {"top", "projects", "principles"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
-    assert "https://openlyuseful.org/og-v2.png" in html
+    assert "https://openlyuseful.org/og-v3.png" in html
     assert "/design-system" in parser.links
-    assert "/brand/open-shell-mark.svg" in html
+    assert "/brand/ou-monitor-mark.svg" in html
+    assert "/brand/ou-monitor-bot.svg" in html
+    assert "open-shell" not in html
 
     system_html = (ROOT / "design-system/index.html").read_text(encoding="utf-8")
     system_parser = LandingPageParser()
     system_parser.feed(system_html)
     assert system_parser.title == "Design System — Openly Useful"
-    assert "The Open Shell" in system_html
-    assert "/brand/brandkit-overview.png" in system_html
+    assert "The Open Monitor" in system_html
+    assert "/brand/brandkit-open-monitor.png" in system_html
+    assert "/brand/ou-monitor-character.svg" in system_html
     assert "Comfortable sharing" in system_html
 
     css = (ROOT / "styles.css").read_text(encoding="utf-8")
@@ -91,8 +109,9 @@ def main() -> None:
     ]:
         assert token in tokens
 
-    board = ROOT / "brand/brandkit-overview.png"
+    board = ROOT / "brand/brandkit-open-monitor.png"
     assert board.stat().st_size > 500_000
+    assert png_dimensions(ROOT / "og-v3.png") == (1200, 630)
     print("Validated Openly Useful landing page")
 
 
