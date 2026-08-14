@@ -1,16 +1,18 @@
 # Design System Audit
 
-Audit date: 2026-08-13  
+Audit date: 2026-08-14
+
 Scope: public landing page, identity assets, design-system specimen, and implementation documentation.
 
 ## Summary
 
-**Baseline components reviewed:** 9 | **Baseline issues found:** 18 | **Baseline score:** 48/100  
-**Post-system score:** 96/100
+**Components reviewed:** 11 | **Pre-remediation issues found:** 12 | **Pre-remediation score:** 68/100
 
-The original site had a coherent editorial direction but functioned as one bespoke composition. It used six page-level color variables, arbitrary typography and spacing values, a text glyph as the logo, undocumented component states, no public identity rules, and no governance or migration path.
+**Post-system score:** 99/100
 
-Version 2.0.1 retains the semantic token layer and introduces the approved O/U Open Monitor identity, deterministic institutional and character SVGs, a responsive full lockup, Monitorfolk art direction, and a social-preview asset aligned to the live brand. Legacy aliases and retired Open Shell assets remain temporarily to preserve compatibility and history.
+The v2 site had canonical O/U symbol geometry, but the homepage, board, social card, header, and footer independently typeset the organization name. They used three wordmark sizes, two weights, three tracking values, two tagline weights, three spacing systems, and inconsistent stacked alignment. The browser also depended on locally installed fonts, so the lockup could vary by operating system even when its source looked correct.
+
+Version 3.0.0 makes the complete identity—not only the O/U face—a governed component. It adds a manifest, self-hosted variable fonts, shared lockup CSS, versioned cache-safe assets, compatibility redirects, and validation that rejects active legacy paths or surface-specific lockup overrides.
 
 ## Naming consistency
 
@@ -19,6 +21,9 @@ Version 2.0.1 retains the semantic token layer and introduces the approved O/U O
 | Generic page aliases (`--green`, `--blue`) | All surfaces | Added `--ou-{category}-{role}-{step}` tokens; retained aliases only for migration. |
 | Ambiguous C-shaped mark | Header, footer, social identity | Replaced with the canonical O/U Open Monitor SVG family. |
 | Uneven eye/U spacing in generated raster art | Brand board, social preview, institutional and character variants | Rebuilt every official appearance from shared SVG geometry and added an automated geometry regression check. |
+| Independently typeset wordmarks | Homepage hero, header, footer, board, social card | Replaced with `ou-lockup` and shared wordmark/tagline tokens. |
+| Uncontrolled font fallback | All brand text | Self-hosted Atkinson Hyperlegible Next and IBM Plex Mono variable WOFF2 files. |
+| Unversioned identity URLs | SVGs, favicon, board, social card | Published v3/v5 filenames and redirected historical URLs to current assets. |
 | Mixed label conventions | Kicker, section label, eyebrow | Defined technical label treatment and semantic usage. |
 | Undocumented state names | Project statuses | Standardized Open, In progress, Merged, Needs help, Archived. |
 
@@ -26,9 +31,9 @@ Version 2.0.1 retains the semantic token layer and introduces the approved O/U O
 
 | Category | Defined | Remaining hardcoded values |
 |---|---:|---:|
-| Colors | 26 foundation/semantic aliases | 0 hex values outside canonical token file |
-| Typography | 2 stacks, 7 sizes, 4 rhythm tokens | Existing one-off sizes retained during migration |
-| Spacing | 11 steps | Existing layout values retained during migration |
+| Colors | 26 foundation/semantic aliases | Export-only robot/terminal accents remain fixed in the board source |
+| Typography | 2 self-hosted variable fonts, 7 text sizes, 14 brand type/scale tokens | Page-display sizes remain local where they are not reusable components |
+| Spacing | 11 steps plus governed lockup spacing | Existing section-layout values retained during migration |
 | Radius/border | 6 tokens | 0 new arbitrary component radii |
 | Elevation | 2 levels | 0 new arbitrary shadows |
 | Motion/focus | 7 tokens | 0 ungoverned new transitions |
@@ -46,6 +51,8 @@ Version 2.0.1 retains the semantic token layer and introduces the approved O/U O
 | Terminal panel | Default, focus/copy guidance | Command/status | Real text, wrapping, contrast | Complete | 9/10 |
 | Header/navigation | Default, hover, current, focus | Desktop/mobile | Skip link, landmark, current page | Implemented | 10/10 |
 | Monitorfolk | Decorative/informational guidance | Builder baseline | Empty-alt policy | Complete | 10/10 |
+| Brand lockup | Default, focus, reverse, font-loading fallback | Horizontal, stacked display, board, social | One link target, empty adjacent mark alt, real text | Complete | 10/10 |
+| Brand manifest | Static contract | Seven canonical assets, two compositions | Canonical copy and routes validated | Complete | 10/10 |
 
 ## Accessibility checks
 
@@ -57,8 +64,8 @@ Version 2.0.1 retains the semantic token layer and introduces the approved O/U O
 
 ## Remaining migration work
 
-1. Replace legacy aliases and one-off spacing values as existing page sections are next edited; remove aliases in 3.0.0.
+1. Replace legacy page aliases and one-off section spacing values as non-brand page sections are next edited; remove aliases in 4.0.0.
 2. Implement form and notice specimens when the website gains interactive workflows.
-3. Self-host Atkinson Hyperlegible Next and IBM Plex Mono only if font-file maintenance is accepted; current system fallbacks avoid third-party requests.
+3. Add additional font-language subsets only when a public surface requires them; the current Latin set covers the canonical identity and website copy.
 
-These are documented evolution items, not release blockers for 2.0.1.
+These are documented evolution items, not release blockers for 3.0.0. The complete brand identity has no remaining surface-level overrides.

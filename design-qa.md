@@ -1,53 +1,62 @@
 # Openly Useful Design QA
 
-QA date: 2026-08-13  
-Scope: official O/U Open Monitor family, production brand board, social card, public landing page, and design-system specimen.
+QA date: 2026-08-14
 
-## Comparison setup
+System version: 3.0.0
+Scope: homepage, public design-system specimen, institutional/reverse/character marks, complete lockups, production brand board, social card, favicon, Monitorfolk, typography, cache behavior, and compatibility routes.
 
-- Source visual truth: user-selected brand board at `f044059:brand/brandkit-open-monitor.png`; the user's focused defect capture was also reviewed at its supplied 590 × 1248 dimensions.
-- Implementation visual truth: `brand/brandkit-open-monitor.png`, rendered by the browser from `brand/brandkit.html` and the canonical SVG files.
-- Full implementation capture: `/tmp/openly-useful-design-qa/implementation-brandkit-pass2.png`.
-- Full combined comparison: `/tmp/openly-useful-design-qa/brandkit-comparison-pass2.png`.
-- Focused combined comparison: `/tmp/openly-useful-design-qa/brandkit-focused-comparison.png`.
-- Full comparison viewport: 1536 × 560 CSS pixels at 1× density; source and implementation were each normalized from 1536 × 1024.
-- Focused comparison viewport: 1536 × 560 CSS pixels at 1× density.
-- State: default light brand presentation, no hover, focus, loading, or reduced-motion state.
+## Source and implementation inputs
 
-The source and implementation were reviewed together in both the full-board and focused institutional/character comparisons. The focused comparison was required because the eye-to-U clearance was too small to judge reliably from a reduced full-board view.
+- Approved composition source: the 1536 × 1024 v2 production board at commit `f42e47f`.
+- Pre-remediation homepage capture: `/tmp/openly-useful-home-brand-audit.webp` at 1440 × 1000.
+- Pre-remediation board capture: `/tmp/openly-useful-board-brand-audit.webp` at 1536 × 1024.
+- Post-remediation homepage capture: `/tmp/openly-useful-home-brand-v3.webp` at 1440 × 1000.
+- Post-remediation mobile capture: `/tmp/openly-useful-home-brand-v3-mobile.webp` at 390 × 844.
+- Post-remediation board capture: `/tmp/openly-useful-board-brand-v3.webp` at 1536 × 1024.
+- Post-remediation social capture: `/tmp/openly-useful-social-brand-v3.webp` at 1200 × 630.
+- Public component capture: `/tmp/openly-useful-lockup-specimen-v3.webp` at 1280 × 900.
+- Mobile component capture: `/tmp/openly-useful-design-system-v3-mobile.webp` at 390 × 844.
 
-## Finding history
+## Findings and corrections
 
-| Priority | Finding | Fix | Post-fix evidence |
+| Priority | Finding | Correction | Post-fix evidence |
 |---|---|---|---|
-| P1 | The generated source independently redrew the institutional and character faces. Square U stroke caps created visible notches and inconsistent eye-to-U spacing. | Replaced stroked U shapes with one filled canonical path; aligned eye centers to the U stems; rebuilt production raster layouts from the canonical SVGs. | Focused combined comparison shows continuous eye blocks, a four-unit eye/U gap, and equal left/right alignment in both variants. `scripts/validate_brand_geometry.py` passes. |
-| P1 | The Monitorfolk starter used eye centers that did not match its U stem centers, and its square caps visually collapsed the gap. | Moved the U stems to the exact eye centerlines and used butt caps so stroke extension cannot invade the gap. | Automated bot geometry assertions pass. |
-| P2 | The first production-board pass undersized the wordmark relative to the selected source. | Increased and rebalanced the real-text wordmark while retaining accessible, non-raster typography on the live product. | The second full-board comparison matches the source hierarchy and left-column visual weight. |
-| P2 | Earlier browser exports had JPEG bytes behind `.png` filenames. | Converted production and QA exports to real PNG encoding and added dimension/signature checks to release validation. | `file` identifies all three production exports as PNG; `scripts/validate_site.py` passes. |
+| P0 | The same symbol was paired with independently defined wordmarks across the homepage, board, social card, header, and footer. Weight, tracking, width, spacing, tagline weight, scale ratio, and alignment differed. | Introduced one `ou-lockup` component with horizontal and stacked variants. Moved all internal typography and spacing into shared tokens and `brand.css`. | Homepage and board now produce the same 336 px mark, 88 px/780 wordmark, 22 px/700 tagline, tracking, line height, optical width, and vertical spacing. |
+| P1 | The declared brand fonts were not delivered, so the wordmark changed with the viewer's installed fonts and operating system. | Self-hosted the official Atkinson Hyperlegible Next and IBM Plex Mono variable WOFF2 files with their OFL licenses. | Browser font checks return `true` for both families on every verified surface. |
+| P1 | Unversioned SVG and raster paths could mix a newly deployed page with a stale cached asset. | Published v3 symbol routes, a v3 favicon/board, and `og-v5.png`; redirected historical routes to the current equivalents. | Active surfaces contain no deprecated routes; compatibility redirects are release-validated. |
+| P1 | Old Open Shell and early social assets were treated as required top-level production files. | Moved them to `brand/archive/pre-v3/` and removed them from the active asset contract. | The manifest contains only current assets; validation rejects archived paths in active surfaces. |
+| P1 | The homepage Monitorfolk face was aligned by eye but did not reuse the exact canonical face proportions; its square SVG was also stretched to a non-square rendered box. | Replaced the custom face with a uniformly scaled canonical eye/U group and enforced `height:auto` wherever the character renders. | Geometry validation proves the same source coordinates and path; browser QA reports a square, undistorted render. |
+| P2 | The design-system page documented a lockup but did not expose a reusable implementation contract. | Added a live component specimen, variants, properties, states, accessibility rules, usage guidance, and architecture document. | Public specimen renders four governed lockups and exact 16/20/34/64 px optical samples. |
+
+## Cross-surface dimensional proof
+
+Desktop homepage and board use the same `board/display` maximum unit. Browser rounding is the only measured delta.
+
+| Element | Homepage | Brand board | Delta |
+|---|---:|---:|---:|
+| Institutional mark | 335.98 px | 336.00 px | 0.02 px |
+| Wordmark visual width | 704.07 px | 704.11 px | 0.04 px |
+| Wordmark font/weight | 88 px / 780 | 88 px / 780 | 0 |
+| Wordmark tracking | -5.456 px | -5.456 px | 0 |
+| Tagline visual width | 335.53 px | 335.61 px | 0.08 px |
+| Tagline font/weight | 22 px / 700 | 22 px / 700 | 0 |
 
 ## Required fidelity surfaces
 
 | Surface | Result | Evidence |
 |---|---|---|
-| Logo geometry | Passed | Eye centerlines are x = 24 and x = 40; eye/U gap is 4 units; U/inner-counter gap is 2.5 units. The same construction is used by the primary, reverse, character, favicon, and Monitorfolk assets. |
-| Typography | Passed | Brand hierarchy matches the selected board while product-facing text remains real text using the documented sans/mono stacks. |
-| Spacing and composition | Passed | Brand board preserves the selected split composition and hierarchy; the lower construction area is intentionally normalized into repeatable system cards. |
-| Color | Passed | Ink/Shell contrast is 15.83:1; Terminal-700/Shell contrast is 6.93:1. Both exceed WCAG AA for body text. |
-| Image quality | Passed | Workshop imagery uses the approved source crop at its intended aspect ratio; official logos are never redrawn inside raster compositions. |
-| Copy | Passed | Organization name and the exact tagline, “Useful things, openly made.”, are consistent. |
-| Responsive behavior | Passed | Landing page and design-system page have no horizontal overflow at 1440 × 1000, 1280 × 900, or 390 × 844. |
-| Icon sizing | Passed | Optical specimens render at exactly 16, 20, 34, and 64 CSS pixels. The 16 px size is favicon-only; 20 px is the minimum general digital mark. |
-| Asset loading | Passed | Browser checks reported no broken images across the landing page, design-system page, brand board, or comparison views. |
-| Console | Passed | Browser console reported no errors or warnings in the verified views. |
-| Release validation | Passed | `python3 scripts/validate_site.py` and the nested brand geometry validator both pass. |
-
-## Intentional differences from the generated source
-
-- AI-rendered lettering was replaced with real, selectable typography.
-- The lower construction area was made more systematic and scannable.
-- Official institutional and character marks use exact production colors rather than the source raster's approximate black/green treatment.
-
-These differences improve production reliability without changing the approved visual direction.
+| Symbol geometry | Passed | Primary, reverse, character, favicon, and Monitorfolk geometry assertions pass. |
+| Complete lockup | Passed | Every active name/mark pairing uses `ou-lockup`; no page may redefine lockup children. |
+| Typography | Passed | Both official variable fonts load locally; weight, tracking, line height, and optical width are shared. |
+| Canonical copy | Passed | Manifest, homepage, board, social card, and specimen use the exact name and tagline. |
+| Desktop responsive behavior | Passed | No horizontal overflow at 1440 × 1000, 1280 × 900, 1536 × 1024, or 1200 × 630. |
+| Mobile responsive behavior | Passed | No horizontal overflow at 390 × 844; the 352.03 px wordmark remains inside the 362 px hero width. |
+| Small-size rendering | Passed | Optical specimens measure exactly 16, 20, 34, and 64 CSS pixels. |
+| Asset loading | Passed | No eagerly loaded image failures on the homepage, board, social card, or design-system page. |
+| Console | Passed | No browser console errors or warnings across the verified homepage, board, social card, and design-system views. |
+| Raster exports | Passed | Board is a real 1536 × 1024 PNG; social card is a real 1200 × 630 PNG. |
+| Accessibility | Passed | Linked lockups are one named focus target; adjacent symbols have empty alt text; web taglines remain real text. |
+| Release governance | Passed | Manifest, brand-system, geometry, site, and compatibility-route checks are part of the release gate. |
 
 ## Final result
 

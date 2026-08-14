@@ -1,6 +1,6 @@
 # Openly Useful Design System
 
-Version **2.0.1** — the public, implementation-ready expression of Openly Useful.
+Version **3.0.0** — the public, implementation-ready expression of Openly Useful.
 
 ## Brand idea
 
@@ -27,8 +27,8 @@ The institutional form has no antenna. The character form adds one antenna only 
 | Element | Role | Rule |
 |---|---|---|
 | Open Monitor mark | Primary symbol | Use the supplied institutional SVG; do not redraw, rotate, outline, or place inside another container. |
-| Wordmark | Primary name | Set “Openly Useful” in the primary sans at 720–780 weight with tight optical tracking. |
-| Lockup | Mark + wordmark | Keep one mark-width of clear space on all sides. Mark height equals cap-height plus 20%. |
+| Wordmark | Primary name | Use the shared lockup component. The canonical treatment is self-hosted Atkinson Hyperlegible Next at weight 780, `-.062em` tracking, `.9` leading, and the documented optical width. |
+| Lockup | Mark + wordmark (+ tagline when stacked) | Use only the governed horizontal or stacked composition from `brand.css`; surface-specific re-typesetting is prohibited. |
 | Character mark | Expressive symbol | Add the supplied antenna only in editorial, community, onboarding, or illustration contexts. |
 | Monitorfolk | Character language | Rounded monitor-headed helpers with the exact O/U face. Show cooperation and useful work, never heroic posing. |
 | Cursor trail | Supporting pattern | Repeat a short cursor or O/U motif at low contrast in one direction. Never make a decorative confetti field. |
@@ -60,7 +60,61 @@ Do not rely on color alone for status. Terminal green is not decoration; reserve
 - Body measure: 45–72 characters. Minimum body size: 16 px. Labels: 12 px minimum when essential.
 - Never simulate nostalgia with pixel fonts, all-caps paragraphs, CRT distortion, or low-contrast green-on-black body text.
 
-The website does not call third-party font services; a consuming project may self-host the OFL-licensed typefaces or use the fallbacks.
+The website self-hosts variable WOFF2 files for Atkinson Hyperlegible Next and IBM Plex Mono under their included OFL licenses. Consuming Openly Useful products should use the supplied files so the wordmark and tagline do not vary by operating system.
+
+## Component: Brand lockup
+
+### Description
+
+The Brand lockup is the only supported way to combine the Open Monitor symbol with the organization name and, where appropriate, the tagline. Its internal typography and spacing come from `tokens.css` and `brand.css` and may not be overridden by a page.
+
+### Variants
+
+| Variant | Use when |
+|---|---|
+| `horizontal` | Site header or footer; name and symbol share one row while retaining the canonical wordmark width |
+| `stacked display` | Homepage hero or equivalent primary identity moment |
+| `stacked board` | Fixed 1536 × 1024 production brand board |
+| `stacked social` | Fixed 1200 × 630 social-preview composition |
+| `reverse` | Horizontal lockup on Ink or Terminal surfaces |
+
+### Properties
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| Composition class | enum | `horizontal` | Chooses a documented layout; arbitrary compositions are not supported |
+| Scale class | enum | surface-defined | Chooses `display`, `board`, or `social` only for stacked lockups |
+| Mark source | URL | manifest institutional asset | Uses the reverse manifest asset only on a reverse surface |
+| Wordmark | fixed string | `Openly Useful` | Must match `brand/manifest.json` |
+| Tagline | fixed string | omitted | Required for stacked identity surfaces; exact copy only |
+
+### States
+
+| State | Visual | Behavior |
+|---|---|---|
+| Default | Terminal mark, Ink wordmark, Terminal-700 tagline | Static identity |
+| Hover | No internal geometry change | A linked lockup may inherit the surrounding link focus/hover treatment |
+| Focus | Two-color system focus ring around the whole link | Keyboard-visible |
+| Reverse | Shell mark and wordmark on Ink | Static identity |
+| Loading | System font fallback may appear briefly | WOFF2 uses `font-display: swap`; layout ratios remain governed |
+
+### Accessibility
+
+- Linked lockups expose the accessible name “Openly Useful home.”
+- The symbol uses empty alternative text when adjacent to the visible wordmark.
+- The tagline remains real text on web surfaces.
+- The complete linked lockup is one focus target.
+
+### Do and don't
+
+| Do | Don't |
+|---|---|
+| Use `ou-lockup` and a documented composition | Rebuild the wordmark with page-specific CSS |
+| Use versioned assets from the manifest | Reference archived or unversioned logos |
+| Scale through the documented surface class | Change child font size, tracking, transform, or margins |
+| Use the reverse asset on dark surfaces | Apply filters or recolor the institutional SVG |
+
+See [`ARCHITECTURE.md`](ARCHITECTURE.md) for system boundaries, validation flow, trade-offs, and the growth path.
 
 ## Layout, shape, and material
 

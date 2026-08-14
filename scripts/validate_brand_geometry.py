@@ -10,7 +10,6 @@ SHELL = "#f7f3e9"
 
 MARK_U = "M20.5 34h7v4c0 3 1.5 4.5 4.5 4.5s4.5-1.5 4.5-4.5v-4h7v4c0 6.2-3.8 9.5-11.5 9.5S20.5 44.2 20.5 38v-4Z"
 CHARACTER_U = "M20.5 40h7v4c0 3 1.5 4.5 4.5 4.5s4.5-1.5 4.5-4.5v-4h7v4c0 6.2-3.8 9.5-11.5 9.5S20.5 50.2 20.5 44v-4Z"
-BOT_U = "M165 147v10c0 27 15 40 40 40s40-13 40-40v-10"
 
 
 def parse(relative_path: str) -> ElementTree.Element:
@@ -61,27 +60,26 @@ def validate_face(
 
 
 def validate_bot() -> None:
-    root = parse("brand/ou-monitor-bot.svg")
-    eyes = sorted(
-        [
-            rect
-            for rect in root.iter(f"{SVG}rect")
-            if rect.get("y") == "107" and rect.get("width") == "16" and rect.get("height") == "25"
-        ],
-        key=lambda rect: float(rect.get("x", "0")),
-    )
-    assert len(eyes) == 2
-    centers = [float(eye.get("x", "0")) + 8 for eye in eyes]
-    assert centers == [165, 245], "Monitorfolk eyes must align to U stem centers"
+    root = parse("brand/ou-monitor-bot-v3.svg")
+    face = next((group for group in root.iter(f"{SVG}g") if group.get("id") == "canonical-face"), None)
+    assert face is not None, "Monitorfolk must contain the canonical face group"
+    assert face.get("transform") == "translate(82 15) scale(4)"
+    assert face.get("stroke") == "none"
 
-    u_matches = [path for path in root.iter(f"{SVG}path") if path.get("d") == BOT_U]
-    assert len(u_matches) == 1, "Monitorfolk canonical U geometry missing"
-    assert u_matches[0].get("stroke-linecap") == "butt", "Monitorfolk eye/U gap must not collapse"
+    eyes = face_rects(face, y=21)
+    assert len(eyes) == 2
+    centers = [float(eye.get("x", "0")) + 3.5 for eye in eyes]
+    assert centers == [24, 40], "Monitorfolk must reuse canonical eye centerlines"
+    assert all(eye.get("fill") == SHELL for eye in eyes)
+
+    u_matches = [path for path in face.iter(f"{SVG}path") if path.get("d") == MARK_U]
+    assert len(u_matches) == 1, "Monitorfolk must reuse the canonical filled U path"
+    assert u_matches[0].get("fill") == GREEN
 
 
 def validate_brand_geometry() -> None:
     validate_face(
-        "brand/ou-monitor-mark.svg",
+        "brand/ou-monitor-mark-v3.svg",
         eye_y=21,
         u_path=MARK_U,
         u_top=34,
@@ -91,7 +89,7 @@ def validate_brand_geometry() -> None:
         u_color=GREEN,
     )
     validate_face(
-        "brand/ou-monitor-reverse.svg",
+        "brand/ou-monitor-reverse-v3.svg",
         eye_y=21,
         u_path=MARK_U,
         u_top=34,
@@ -101,7 +99,7 @@ def validate_brand_geometry() -> None:
         u_color=SHELL,
     )
     validate_face(
-        "favicon.svg",
+        "favicon-v3.svg",
         eye_y=21,
         u_path=MARK_U,
         u_top=34,
@@ -111,7 +109,7 @@ def validate_brand_geometry() -> None:
         u_color=GREEN,
     )
     validate_face(
-        "brand/ou-monitor-character.svg",
+        "brand/ou-monitor-character-v3.svg",
         eye_y=27,
         u_path=CHARACTER_U,
         u_top=40,

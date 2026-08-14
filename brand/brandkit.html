@@ -4,17 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Openly Useful Brand Kit</title>
+  <link rel="stylesheet" href="/design-system/tokens.css">
+  <link rel="stylesheet" href="/design-system/brand.css">
   <style>
-    :root { --paper:#f7f3e9; --surface:#fffdf8; --ink:#171a18; --muted:#596159; --green:#247a4b; --blue:#3568a8; --amber:#d89524; --line:rgb(23 26 24 / .25); --sans:"Atkinson Hyperlegible Next",Atkinson Hyperlegible,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; }
+    :root { --paper:var(--ou-color-canvas); --surface:var(--ou-color-surface); --ink:var(--ou-color-text); --muted:#596159; --green:var(--ou-color-brand); --blue:var(--ou-color-process-600); --amber:#d89524; --line:rgb(23 26 24 / .25); --sans:var(--ou-font-sans); --mono:var(--ou-font-mono); }
     * { box-sizing:border-box; }
     html,body { width:1536px; height:1024px; margin:0; overflow:hidden; }
     body { background:var(--paper); color:var(--ink); font-family:var(--sans); }
     .board { width:1536px; height:1024px; display:grid; grid-template-columns:832px 704px; background-color:var(--paper); background-image:radial-gradient(circle at 18% 22%,rgb(23 26 24 / .04) 0 .55px,transparent .75px),radial-gradient(circle at 78% 68%,rgb(36 122 75 / .025) 0 .45px,transparent .7px); background-size:13px 15px,17px 19px; }
     .system { height:1024px; padding:60px 56px 24px; display:flex; flex-direction:column; }
-    .hero { display:grid; justify-items:center; text-align:center; }
-    .hero-mark { width:336px; height:336px; display:block; }
-    h1 { margin:18px 0 0; font-size:88px; line-height:.9; letter-spacing:-.062em; font-weight:780; white-space:nowrap; transform:scaleX(1.34); transform-origin:center; }
-    .tagline { margin:20px 0 0; color:var(--green); font:700 22px/1.2 var(--mono); letter-spacing:-.035em; }
+    .board-hero { width:100%; }
     .rule { height:1px; margin:24px 0 20px; background:var(--line); }
     .identity-row { display:grid; grid-template-columns:1.05fr 1fr; gap:24px; min-height:214px; }
     figure { margin:0; }
@@ -48,17 +47,17 @@
 <body>
   <main class="board">
     <section class="system" aria-label="Openly Useful identity system">
-      <header class="hero"><img class="hero-mark" src="/brand/ou-monitor-mark.svg" alt=""><h1>Openly Useful</h1><p class="tagline">Useful things, openly made.</p></header>
+      <header class="board-hero ou-lockup ou-lockup--stacked ou-lockup--board"><img class="ou-lockup__mark" src="/brand/ou-monitor-mark-v3.svg" alt=""><h1 class="ou-lockup__wordmark">Openly Useful</h1><p class="ou-lockup__tagline">Useful things, openly made.</p></header>
       <div class="rule"></div>
       <div class="identity-row">
-        <figure class="grid-proof"><div class="grid-wrap"><img src="/brand/ou-monitor-mark.svg" alt=""></div><figcaption><span class="eyebrow">Canonical 64-unit grid</span><h2>One face.<br>One geometry.</h2><p>Eye centers: 24 / 40<br>Eye gap: 4 units<br>Lower counter: 2.5 units</p></figcaption></figure>
-        <div class="variants"><figure class="variant"><img src="/brand/ou-monitor-mark.svg" alt=""><figcaption>Institutional</figcaption></figure><figure class="variant"><img src="/brand/ou-monitor-character.svg" alt=""><figcaption>Character</figcaption></figure></div>
+        <figure class="grid-proof"><div class="grid-wrap"><img src="/brand/ou-monitor-mark-v3.svg" alt=""></div><figcaption><span class="eyebrow">Canonical 64-unit grid</span><h2>One face.<br>One geometry.</h2><p>Eye centers: 24 / 40<br>Eye gap: 4 units<br>Lower counter: 2.5 units</p></figcaption></figure>
+        <div class="variants"><figure class="variant"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>Institutional</figcaption></figure><figure class="variant"><img src="/brand/ou-monitor-character-v3.svg" alt=""><figcaption>Character</figcaption></figure></div>
       </div>
       <div class="utility-row">
-        <div class="sizes" aria-label="Production logo sizes"><figure class="size" style="--size:16px"><img src="/brand/ou-monitor-mark.svg" alt=""><figcaption>16 px</figcaption></figure><figure class="size" style="--size:20px"><img src="/brand/ou-monitor-mark.svg" alt=""><figcaption>20 px</figcaption></figure><figure class="size" style="--size:34px"><img src="/brand/ou-monitor-mark.svg" alt=""><figcaption>34 px</figcaption></figure><figure class="size" style="--size:64px"><img src="/brand/ou-monitor-mark.svg" alt=""><figcaption>64 px</figcaption></figure></div>
+        <div class="sizes" aria-label="Production logo sizes"><figure class="size" style="--size:16px"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>16 px</figcaption></figure><figure class="size" style="--size:20px"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>20 px</figcaption></figure><figure class="size" style="--size:34px"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>34 px</figcaption></figure><figure class="size" style="--size:64px"><img src="/brand/ou-monitor-mark-v3.svg" alt=""><figcaption>64 px</figcaption></figure></div>
         <div class="terminal"><div class="dots"><i></i><i></i><i></i></div><code>$ openly-useful --share</code></div>
       </div>
-      <p class="caption"><span>Institutional · character · favicon · application</span><span>Design system 2.0.1</span></p>
+      <p class="caption"><span>One mark · one wordmark · one tagline</span><span>Design system 3.0.0</span></p>
     </section>
     <figure class="art"><img src="/brand/monitorfolk-workshop.png" alt="Two friendly retro-future robots sharing a README at a community workstation"></figure>
   </main>
