@@ -5,6 +5,7 @@ from pathlib import Path
 from struct import unpack
 
 from validate_brand_geometry import validate_brand_geometry
+from validate_brand_system import validate_brand_system
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -45,32 +46,29 @@ def png_dimensions(path: Path) -> tuple[int, int]:
 
 def main() -> None:
     validate_brand_geometry()
+    validate_brand_system()
     required = [
         "index.html",
         "styles.css",
-        "favicon.svg",
-        "og.png",
-        "og-v2.png",
-        "og-v3.png",
-        "og-v4.png",
+        "favicon-v3.svg",
+        "og-v5.png",
         "robots.txt",
         "sitemap.xml",
         "vercel.json",
         "brand/README.md",
-        "brand/open-shell-mark.svg",
-        "brand/open-shell-reverse.svg",
-        "brand/shellfolk-builder.svg",
-        "brand/brandkit-overview.png",
-        "brand/ou-monitor-mark.svg",
-        "brand/ou-monitor-reverse.svg",
-        "brand/ou-monitor-character.svg",
-        "brand/ou-monitor-bot.svg",
-        "brand/brandkit-open-monitor.png",
+        "brand/manifest.json",
+        "brand/ou-monitor-mark-v3.svg",
+        "brand/ou-monitor-reverse-v3.svg",
+        "brand/ou-monitor-character-v3.svg",
+        "brand/ou-monitor-bot-v3.svg",
+        "brand/brandkit-open-monitor-v3.png",
         "brand/monitorfolk-workshop.png",
         "brand/brandkit.html",
         "brand/og-card.html",
         "design-system/README.md",
+        "design-system/ARCHITECTURE.md",
         "design-system/index.html",
+        "design-system/brand.css",
         "design-system/tokens.css",
     ]
     missing = [name for name in required if not (ROOT / name).is_file()]
@@ -84,10 +82,10 @@ def main() -> None:
     assert {"top", "projects", "principles"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
-    assert "https://openlyuseful.org/og-v4.png" in html
+    assert "https://openlyuseful.org/og-v5.png" in html
     assert "/design-system" in parser.links
-    assert "/brand/ou-monitor-mark.svg" in html
-    assert "/brand/ou-monitor-bot.svg" in html
+    assert "/brand/ou-monitor-mark-v3.svg" in html
+    assert "/brand/ou-monitor-bot-v3.svg" in html
     assert "open-shell" not in html
 
     system_html = (ROOT / "design-system/index.html").read_text(encoding="utf-8")
@@ -95,8 +93,8 @@ def main() -> None:
     system_parser.feed(system_html)
     assert system_parser.title == "Design System — Openly Useful"
     assert "The Open Monitor" in system_html
-    assert "/brand/brandkit-open-monitor.png" in system_html
-    assert "/brand/ou-monitor-character.svg" in system_html
+    assert "/brand/brandkit-open-monitor-v3.png" in system_html
+    assert "/brand/ou-monitor-character-v3.svg" in system_html
     assert "Comfortable sharing" in system_html
 
     css = (ROOT / "styles.css").read_text(encoding="utf-8")
@@ -116,19 +114,19 @@ def main() -> None:
     ]:
         assert token in tokens
 
-    board = ROOT / "brand/brandkit-open-monitor.png"
+    board = ROOT / "brand/brandkit-open-monitor-v3.png"
     assert board.stat().st_size > 100_000
     assert png_dimensions(board) == (1536, 1024)
     assert png_dimensions(ROOT / "brand/monitorfolk-workshop.png") == (704, 1024)
-    assert png_dimensions(ROOT / "og-v4.png") == (1200, 630)
+    assert png_dimensions(ROOT / "og-v5.png") == (1200, 630)
 
     board_source = (ROOT / "brand/brandkit.html").read_text(encoding="utf-8")
-    assert board_source.count("/brand/ou-monitor-mark.svg") == 7
-    assert board_source.count("/brand/ou-monitor-character.svg") == 1
+    assert board_source.count("/brand/ou-monitor-mark-v3.svg") == 7
+    assert board_source.count("/brand/ou-monitor-character-v3.svg") == 1
     assert "brandkit-open-monitor-source-tmp" not in board_source
 
     social_source = (ROOT / "brand/og-card.html").read_text(encoding="utf-8")
-    assert social_source.count("/brand/ou-monitor-mark.svg") == 1
+    assert social_source.count("/brand/ou-monitor-mark-v3.svg") == 1
     print("Validated Openly Useful landing page")
 
 

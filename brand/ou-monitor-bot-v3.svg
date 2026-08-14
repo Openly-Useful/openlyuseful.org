@@ -12,9 +12,11 @@
     <rect x="112" y="73" width="196" height="145" rx="50" fill="#171a18"/>
     <circle cx="84" cy="143" r="25" fill="#247a4b"/><circle cx="84" cy="143" r="12" fill="#171a18"/>
     <circle cx="336" cy="143" r="25" fill="#247a4b"/><circle cx="336" cy="143" r="12" fill="#171a18"/>
-    <rect x="157" y="107" width="16" height="25" rx="3" fill="#f7f3e9" stroke="none"/>
-    <rect x="237" y="107" width="16" height="25" rx="3" fill="#f7f3e9" stroke="none"/>
-    <path d="M165 147v10c0 27 15 40 40 40s40-13 40-40v-10" fill="none" stroke="#247a4b" stroke-width="22" stroke-linecap="butt"/>
+    <g id="canonical-face" transform="translate(82 15) scale(4)" stroke="none">
+      <rect x="20.5" y="21" width="7" height="9" rx="1.5" fill="#f7f3e9"/>
+      <rect x="36.5" y="21" width="7" height="9" rx="1.5" fill="#f7f3e9"/>
+      <path d="M20.5 34h7v4c0 3 1.5 4.5 4.5 4.5s4.5-1.5 4.5-4.5v-4h7v4c0 6.2-3.8 9.5-11.5 9.5S20.5 44.2 20.5 38v-4Z" fill="#247a4b"/>
+    </g>
     <path d="M128 244c18-20 48-31 82-31s64 11 82 31l22 100c-27 22-62 34-104 34s-77-12-104-34l22-100Z" fill="#247a4b"/>
     <path d="M151 249c16 14 35 21 59 21s43-7 59-21" fill="none" stroke="#3568a8" stroke-width="19" stroke-linecap="round"/>
     <path d="M105 273 62 310c-14 12-15 31-3 44 12 13 32 14 45 2l43-39" fill="#247a4b" stroke-linecap="round"/>

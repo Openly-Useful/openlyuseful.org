@@ -1,0 +1,119 @@
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("/design-system/fonts/AtkinsonHyperlegibleNext-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/design-system/fonts/IBMPlexMono-variable-latin1.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+}
+
+/*
+ * Openly Useful brand-lockup contract.
+ *
+ * The mark, wordmark, and tagline are one governed component. Surfaces may
+ * choose a documented composition and size, but may not redefine typography,
+ * tracking, proportions, or internal spacing.
+ */
+.ou-lockup {
+  color: var(--ou-color-text);
+  font-family: var(--ou-font-sans);
+}
+
+.ou-lockup__mark {
+  display: block;
+  flex: none;
+}
+
+.ou-lockup__wordmark {
+  color: currentColor;
+  font-family: var(--ou-font-sans);
+  font-weight: var(--ou-brand-wordmark-weight);
+  letter-spacing: var(--ou-brand-wordmark-tracking);
+  line-height: var(--ou-brand-wordmark-leading);
+  transform: scaleX(var(--ou-brand-wordmark-scale-x));
+  transform-origin: center;
+  white-space: nowrap;
+}
+
+.ou-lockup__tagline {
+  color: var(--ou-color-brand-strong);
+  font-family: var(--ou-font-mono);
+  font-weight: var(--ou-brand-tagline-weight);
+  letter-spacing: var(--ou-brand-tagline-tracking);
+  line-height: var(--ou-brand-tagline-leading);
+  white-space: nowrap;
+}
+
+.ou-lockup--horizontal {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ou-brand-horizontal-gap);
+  padding-inline-end: var(--ou-brand-horizontal-compensation);
+}
+
+.ou-lockup--horizontal .ou-lockup__mark {
+  width: var(--ou-brand-horizontal-mark);
+  height: var(--ou-brand-horizontal-mark);
+}
+
+.ou-lockup--horizontal .ou-lockup__wordmark {
+  font-size: var(--ou-brand-horizontal-wordmark);
+  transform-origin: left;
+}
+
+.ou-lockup--stacked {
+  --ou-lockup-unit: var(--ou-brand-board-unit);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ou-color-text);
+  font-size: var(--ou-lockup-unit);
+  text-align: center;
+}
+
+.ou-lockup--stacked .ou-lockup__mark {
+  width: 4em;
+  height: 4em;
+}
+
+.ou-lockup--stacked .ou-lockup__wordmark {
+  margin: .204545em 0 0;
+  font-size: 1.047619em;
+}
+
+.ou-lockup--stacked .ou-lockup__tagline {
+  margin: .909091em 0 0;
+  font-size: .261905em;
+}
+
+.ou-lockup--display {
+  --ou-lockup-unit: var(--ou-brand-display-unit);
+}
+
+.ou-lockup--board {
+  --ou-lockup-unit: var(--ou-brand-board-unit);
+}
+
+.ou-lockup--social {
+  --ou-lockup-unit: var(--ou-brand-social-unit);
+}
+
+.ou-lockup--reverse {
+  color: var(--ou-color-surface);
+}
+
+.ou-lockup--reverse .ou-lockup__tagline {
+  color: var(--ou-color-terminal-300);
+}
+
+@media (forced-colors: active) {
+  .ou-lockup__mark { forced-color-adjust: none; }
+}
