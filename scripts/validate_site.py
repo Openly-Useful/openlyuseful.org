@@ -20,6 +20,7 @@ class LandingPageParser(HTMLParser):
         self.in_title = False
         self.ids: set[str] = set()
         self.links: list[str] = []
+        self.canonical = ""
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
@@ -29,6 +30,8 @@ class LandingPageParser(HTMLParser):
             self.ids.add(values["id"] or "")
         if tag == "a" and values.get("href"):
             self.links.append(values["href"] or "")
+        if tag == "link" and values.get("rel") == "canonical":
+            self.canonical = values.get("href") or ""
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "title":
@@ -140,6 +143,12 @@ def main() -> None:
         "open-source-robots.txt",
         "open-source-sitemap.xml",
         "vercel.json",
+        "publisher/index.html",
+        "publisher/manifest.json",
+        "legal/privacy.html",
+        "legal/terms.html",
+        "security.html",
+        "support.html",
         "brand/README.md",
         "brand/manifest.json",
         "brand/ou-monitor-mark-v3.svg",
@@ -213,11 +222,136 @@ def main() -> None:
     assert {"top", "work", "capabilities", "about"}.issubset(studio_parser.ids)
     assert "https://openlyuseful.org" in studio_parser.links
     assert "https://gloatroom.com" in studio_parser.links
-    assert "mailto:hello@openlyuseful.com" in studio_parser.links
+    assert "mailto:hello@openlyuseful.org?subject=STUDIO" in studio_parser.links
+    assert "hello@openlyuseful.com" not in studio_html
     assert "https://openlyuseful.com/brand/studio/openly-useful-studio-open-graph-1200x630.png" in studio_html
     assert "/brand/ou-lockup-horizontal-reverse-v4.svg" in studio_html
     assert "project status" not in studio_html.lower()
     assert "progressmark" not in studio_html.lower()
+
+    publisher_urls = {
+        "https://openlyuseful.org/publisher",
+        "https://openlyuseful.org/support",
+        "https://openlyuseful.org/legal/privacy",
+        "https://openlyuseful.org/legal/terms",
+        "https://openlyuseful.org/security",
+    }
+    public_footer_files = {
+        "open-source.html": html,
+        "studio.html": studio_html,
+        "design-system/index.html": (ROOT / "design-system/index.html").read_text(encoding="utf-8"),
+        "brand/media-kit.html": (ROOT / "brand/media-kit.html").read_text(encoding="utf-8"),
+    }
+    for name, public_html in public_footer_files.items():
+        assert "OpenlyUseful.com: Studio" in public_html, name
+        assert "OpenlyUseful.org: Open Source + publisher" in public_html, name
+        assert "Planned legal entity: Openly Useful LLC" in public_html, name
+        assert "formation-pending" in public_html, name
+        footer_parser = LandingPageParser()
+        footer_parser.feed(public_html)
+        assert publisher_urls.issubset(footer_parser.links), name
+
+    policy_pages = {
+        "publisher/index.html": ("Publisher — Openly Useful", "https://openlyuseful.org/publisher"),
+        "legal/privacy.html": ("Privacy — Openly Useful", "https://openlyuseful.org/legal/privacy"),
+        "legal/terms.html": ("Terms — Openly Useful", "https://openlyuseful.org/legal/terms"),
+        "security.html": ("Security — Openly Useful", "https://openlyuseful.org/security"),
+        "support.html": ("Support — Openly Useful", "https://openlyuseful.org/support"),
+    }
+    formation_aware_files = dict(public_footer_files)
+    for name, (expected_title, expected_canonical) in policy_pages.items():
+        policy_html = (ROOT / name).read_text(encoding="utf-8")
+        policy_parser = LandingPageParser()
+        policy_parser.feed(policy_html)
+        assert policy_parser.title == expected_title, name
+        assert policy_parser.canonical == expected_canonical, name
+        assert "Openly Useful LLC" in policy_html, name
+        assert "formation-pending" in policy_html, name
+        assert publisher_urls.issubset(policy_parser.links), name
+        formation_aware_files[name] = policy_html
+
+    support_html = formation_aware_files["support.html"]
+    assert "mailto:hello@openlyuseful.org?subject=SUPPORT" in support_html
+    assert "mailto:hello@openlyuseful.org?subject=SECURITY" in support_html
+    assert 'href="/security"' in support_html
+    security_html = formation_aware_files["security.html"]
+    assert "mailto:hello@openlyuseful.org?subject=SECURITY" in security_html
+    assert "security@openlyuseful.org" not in security_html
+    assert "no guaranteed response time is offered" in security_html
+    privacy_html = formation_aware_files["legal/privacy.html"]
+    assert "founder-operated Openly Useful project is the current operator and data controller" in privacy_html
+    terms_html = formation_aware_files["legal/terms.html"]
+    assert "founder-operated Openly Useful project" in terms_html
+    assert "current operator of the informational sites" in terms_html
+
+    publisher = json.loads((ROOT / "publisher/manifest.json").read_text(encoding="utf-8"))
+    assert publisher["schemaVersion"] == 1
+    assert publisher["id"] == "openly-useful"
+    assert publisher["displayName"] == "Openly Useful"
+    assert publisher["authorityManifest"] == "https://openlyuseful.org/publisher/manifest.json"
+    assert publisher["legal"] == {
+        "plannedName": "Openly Useful LLC",
+        "activeName": None,
+        "status": "formation-pending",
+        "plannedRoles": ["publisher", "operator", "licensee"],
+    }
+    assert publisher["domains"] == {
+        "studio": "https://openlyuseful.com",
+        "openSource": "https://openlyuseful.org",
+        "publicAuthority": "openlyuseful.org",
+    }
+    assert publisher["organization"]["github"] == "https://github.com/Openly-Useful"
+    assert publisher["contacts"] == {
+        "public": "hello@openlyuseful.org",
+        "routing": "Use the email subject to route publishing, security, legal, and support requests.",
+    }
+    assert publisher["policies"] == {
+        "privacy": "https://openlyuseful.org/legal/privacy",
+        "terms": "https://openlyuseful.org/legal/terms",
+        "security": "https://openlyuseful.org/security",
+        "support": "https://openlyuseful.org/support",
+    }
+    assert publisher["namespaces"] == {
+        "npm": "@openly-useful",
+        "openSourceMcp": "org.openlyuseful",
+        "reservedStudioMcp": "com.openlyuseful",
+    }
+    assert publisher["publication"] == {
+        "localGenerationAllowed": True,
+        "localTestingAllowed": True,
+        "externalPublicationAllowed": False,
+        "authorization": "withheld",
+        "blockingRequirements": [
+            "formation-active",
+            "publisher-authorization",
+            "namespace-verification",
+            "public-policy-url-verification",
+        ],
+    }
+    assert "published authority endpoint" in publisher["artifactPolicy"]["authorityEndpoint"]
+    assert "governed editable publisher source" in publisher["artifactPolicy"]["authorityEndpoint"]
+    assert "sourceOfTruth" not in publisher["artifactPolicy"]
+    assert "derive publisher identity" in publisher["artifactPolicy"]["derivation"]
+    assert "must not be represented as formed" in publisher["artifactPolicy"]["activation"]
+    assert "required publisher verification" in publisher["artifactPolicy"]["activation"]
+    assert "ownership verification" not in publisher["artifactPolicy"]["activation"]
+
+    formation_aware_files["README.md"] = (ROOT / "README.md").read_text(encoding="utf-8")
+    formation_aware_files["BRAND_ARCHITECTURE.md"] = (ROOT / "BRAND_ARCHITECTURE.md").read_text(encoding="utf-8")
+    forbidden_active_claims = {
+        "operated by openly useful llc",
+        "published by openly useful llc",
+        "openly useful llc is active",
+        "openly useful llc is the operator",
+        "openly useful llc owns",
+    }
+    for name, public_text in formation_aware_files.items():
+        lowered = public_text.lower()
+        if "openly useful llc" in lowered:
+            assert "formation-pending" in lowered, name
+        assert "ownership verification" not in lowered, name
+        for claim in forbidden_active_claims:
+            assert claim not in lowered, f"{name}: premature legal-entity claim: {claim}"
 
     system_html = (ROOT / "design-system/index.html").read_text(encoding="utf-8")
     system_parser = LandingPageParser()
@@ -232,6 +366,8 @@ def main() -> None:
     assert "prefers-reduced-motion" in css
     assert "forced-colors" in css
     assert "@media (max-width:520px)" in css
+    assert ".policy-shell" in css
+    assert ".publisher-record" in css
 
     studio_css = (ROOT / "studio.css").read_text(encoding="utf-8")
     assert "prefers-reduced-motion" in studio_css
@@ -290,6 +426,8 @@ def main() -> None:
 
     sitemap = (ROOT / "open-source-sitemap.xml").read_text(encoding="utf-8")
     assert "https://openlyuseful.org/brand/media-kit.html" in sitemap
+    for canonical_url in publisher_urls:
+        assert canonical_url in sitemap
     studio_sitemap = (ROOT / "studio-sitemap.xml").read_text(encoding="utf-8")
     assert "https://openlyuseful.com/" in studio_sitemap
 
@@ -300,6 +438,20 @@ def main() -> None:
         and redirect.get("has") == [{"type": "host", "value": "www.openlyuseful.com"}]
         for redirect in vercel["redirects"]
     )
+    expected_canonical_redirects = {
+        ("/publisher", "https://openlyuseful.org/publisher"),
+        ("/publisher/:path*", "https://openlyuseful.org/publisher/:path*"),
+        ("/legal/:path*", "https://openlyuseful.org/legal/:path*"),
+        ("/security", "https://openlyuseful.org/security"),
+        ("/support", "https://openlyuseful.org/support"),
+    }
+    actual_canonical_redirects = {
+        (redirect["source"], redirect["destination"])
+        for redirect in vercel["redirects"]
+        if redirect.get("has") == [{"type": "host", "value": "openlyuseful.com"}]
+        and redirect.get("permanent") is True
+    }
+    assert expected_canonical_redirects.issubset(actual_canonical_redirects)
     expected_rewrites = {
         ("/", "openlyuseful.com", "/studio"),
         ("/robots.txt", "openlyuseful.com", "/studio-robots.txt"),
