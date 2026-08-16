@@ -31,6 +31,36 @@
       "permanent": true
     },
     {
+      "source": "/publisher",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "https://openlyuseful.org/publisher",
+      "permanent": true
+    },
+    {
+      "source": "/publisher/:path*",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "https://openlyuseful.org/publisher/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/legal/:path*",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "https://openlyuseful.org/legal/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/security",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "https://openlyuseful.org/security",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "https://openlyuseful.org/support",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.openlyuseful.com" }],
       "destination": "https://openlyuseful.com/:path*",
