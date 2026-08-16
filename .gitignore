@@ -1,3 +1,4 @@
 .vercel
 .DS_Store
 brand/explorations/
+__pycache__/
