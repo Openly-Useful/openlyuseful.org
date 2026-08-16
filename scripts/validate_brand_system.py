@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 ACTIVE_SURFACES = [
     "index.html",
+    "studio.html",
     "design-system/index.html",
     "brand/brandkit.html",
     "brand/og-card.html",
@@ -120,6 +121,11 @@ def validate_brand_system() -> None:
     assert home.count(stacked) == 1
     assert home.count(monitorfolk) == 1
 
+    studio = read("studio.html")
+    assert lockup_count(studio) == 2
+    assert studio.count(horizontal_reverse) == 2
+    assert horizontal not in studio
+
     specimen = read("design-system/index.html")
     assert lockup_count(specimen) == 4
     assert institutional in specimen
@@ -155,7 +161,7 @@ def validate_brand_system() -> None:
     ]:
         assert required in tokens
 
-    other_css = read("styles.css") + board + social
+    other_css = read("styles.css") + read("studio.css") + board + social
     assert not re.search(r"\.ou-lockup(?:--horizontal|--stacked)?\s*\{", other_css)
 
     validate_outlined_svg("brand/ou-wordmark-v4.svg", "0 0 8018.29 880")

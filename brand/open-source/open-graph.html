@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1200,initial-scale=1">
+  <title>Openly Useful Open Source social card source</title>
+  <style>
+    @font-face { font-family:Atkinson; src:url("/design-system/fonts/AtkinsonHyperlegibleNext-variable.woff2") format("woff2"); font-weight:200 800; }
+    @font-face { font-family:Plex; src:url("/design-system/fonts/IBMPlexMono-variable-latin1.woff2") format("woff2"); font-weight:100 700; }
+    * { box-sizing:border-box; }
+    html,body { width:1200px; height:630px; margin:0; overflow:hidden; }
+    body { padding:48px 60px; background:#f7f3e9; color:#171a18; font-family:Atkinson,sans-serif; }
+    .card { height:534px; padding:16px 26px 16px 32px; display:grid; grid-template-rows:44px 190px 1fr 44px; border-left:6px solid #247a4b; background-image:radial-gradient(circle,#247a4b 0 1.2px,transparent 1.4px); background-size:42px 42px; }
+    .top,.bottom { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgb(23 26 24 / .3); color:#185f39; font:700 15px/1 Plex,monospace; letter-spacing:.14em; }
+    .identity { display:flex; align-items:center; justify-content:space-between; }
+    .lockup { width:650px; height:auto; }
+    .mark { width:240px; height:240px; opacity:.11; transform:translateY(42px); }
+    h1 { max-width:960px; margin:10px 0 0; align-self:center; font-size:76px; line-height:.94; letter-spacing:-.055em; font-weight:680; }
+    .bottom { border-top:1px solid rgb(23 26 24 / .3); border-bottom:0; color:#171a18; font-size:14px; }
+    .bottom span:last-child { color:#185f39; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="top"><span>OPENLY USEFUL / OPEN SOURCE</span><span>02 / .ORG</span></div>
+    <div class="identity"><img class="lockup" src="/brand/ou-lockup-horizontal-v4.svg" alt=""><img class="mark" src="/brand/ou-monitor-mark-v3.svg" alt=""></div>
+    <h1>Open-source tools<br>for everyone.</h1>
+    <div class="bottom"><span>OPENLYUSEFUL.ORG</span><span>.COM / STUDIO</span></div>
+  </main>
+</body>
+</html>
