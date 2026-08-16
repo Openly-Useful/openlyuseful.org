@@ -124,16 +124,21 @@ def main() -> None:
     validate_brand_system()
     validate_brand_exports()
     required = [
-        "index.html",
+        "BRAND_ARCHITECTURE.md",
+        "open-source.html",
         "styles.css",
+        "studio.html",
+        "studio.css",
+        "studio-robots.txt",
+        "studio-sitemap.xml",
         "favicon-v3.svg",
         "apple-touch-icon-v1.png",
         "icon-192-v1.png",
         "icon-512-v1.png",
         "site.webmanifest",
         "og-v6.png",
-        "robots.txt",
-        "sitemap.xml",
+        "open-source-robots.txt",
+        "open-source-sitemap.xml",
         "vercel.json",
         "brand/README.md",
         "brand/manifest.json",
@@ -157,6 +162,10 @@ def main() -> None:
         "brand/brandkit.html",
         "brand/og-card.html",
         "brand/media-kit.html",
+        "brand/studio/open-graph.html",
+        "brand/studio/openly-useful-studio-open-graph-1200x630.png",
+        "brand/open-source/open-graph.html",
+        "brand/open-source/openly-useful-open-source-open-graph-1200x630.png",
         "design-system/README.md",
         "design-system/ARCHITECTURE.md",
         "design-system/index.html",
@@ -170,17 +179,20 @@ def main() -> None:
     missing = [name for name in required if not (ROOT / name).is_file()]
     if missing:
         raise AssertionError(f"Missing required site files: {', '.join(missing)}")
+    for shadowing_path in ["index.html", "robots.txt", "sitemap.xml"]:
+        assert not (ROOT / shadowing_path).exists(), f"{shadowing_path} would shadow a host-aware rewrite"
 
-    html = (ROOT / "index.html").read_text(encoding="utf-8")
+    html = (ROOT / "open-source.html").read_text(encoding="utf-8")
     parser = LandingPageParser()
     parser.feed(html)
-    assert parser.title == "Openly Useful — Useful things, openly made."
-    assert {"top", "projects", "principles"}.issubset(parser.ids)
+    assert parser.title == "Openly Useful Open Source — Useful things, openly made."
+    assert {"top", "projects", "principles", "about"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "https://github.com/openly-useful/citewire" in [link.lower() for link in parser.links]
     assert "https://github.com/openly-useful/skill-feedback-engine" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
-    assert "https://openlyuseful.org/brand/social/openly-useful-open-graph-1200x630.png" in html
+    assert "https://openlyuseful.org/brand/open-source/openly-useful-open-source-open-graph-1200x630.png" in html
+    assert "https://openlyuseful.com" in parser.links
     assert "/design-system" in parser.links
     assert "/brand/ou-lockup-horizontal-v4.svg" in html
     assert "/brand/ou-lockup-stacked-v4.svg" in html
@@ -189,6 +201,23 @@ def main() -> None:
     assert "/site.webmanifest" in html
     assert "/brand/ou-monitor-bot-v3.svg" in html
     assert "open-shell" not in html
+    assert "open-source collective" not in html.lower()
+    assert "public benefit" not in html.lower()
+
+    studio_html = (ROOT / "studio.html").read_text(encoding="utf-8")
+    studio_parser = LandingPageParser()
+    studio_parser.feed(studio_html)
+    assert studio_parser.title == "Openly Useful Studio — Practical software, thoughtfully made."
+    assert "Practical software." in studio_html
+    assert "Thoughtfully made." in studio_html
+    assert {"top", "work", "capabilities", "about"}.issubset(studio_parser.ids)
+    assert "https://openlyuseful.org" in studio_parser.links
+    assert "https://gloatroom.com" in studio_parser.links
+    assert "mailto:hello@openlyuseful.com" in studio_parser.links
+    assert "https://openlyuseful.com/brand/studio/openly-useful-studio-open-graph-1200x630.png" in studio_html
+    assert "/brand/ou-lockup-horizontal-reverse-v4.svg" in studio_html
+    assert "project status" not in studio_html.lower()
+    assert "progressmark" not in studio_html.lower()
 
     system_html = (ROOT / "design-system/index.html").read_text(encoding="utf-8")
     system_parser = LandingPageParser()
@@ -203,6 +232,11 @@ def main() -> None:
     assert "prefers-reduced-motion" in css
     assert "forced-colors" in css
     assert "@media (max-width:520px)" in css
+
+    studio_css = (ROOT / "studio.css").read_text(encoding="utf-8")
+    assert "prefers-reduced-motion" in studio_css
+    assert "forced-colors" in studio_css
+    assert "@media (max-width:560px)" in studio_css
 
     tokens = (ROOT / "design-system/tokens.css").read_text(encoding="utf-8")
     for token in [
@@ -221,6 +255,8 @@ def main() -> None:
     assert png_dimensions(board) == (1536, 1024)
     assert png_dimensions(ROOT / "brand/monitorfolk-workshop.png") == (704, 1024)
     assert png_dimensions(ROOT / "brand/social/openly-useful-open-graph-1200x630.png") == (1200, 630)
+    assert png_dimensions(ROOT / "brand/studio/openly-useful-studio-open-graph-1200x630.png") == (1200, 630)
+    assert png_dimensions(ROOT / "brand/open-source/openly-useful-open-source-open-graph-1200x630.png") == (1200, 630)
     assert_profile_raster(ROOT / "brand/ou-profile-mark-v1.png", 1024)
     assert_profile_raster(ROOT / "apple-touch-icon-v1.png", 180)
     assert_profile_raster(ROOT / "icon-192-v1.png", 192)
@@ -252,8 +288,42 @@ def main() -> None:
     assert "/brand/templates/openly-useful-presentation-cover-1920x1080.png" in media_kit
     assert "One identity. Every useful surface." in media_kit
 
-    sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    sitemap = (ROOT / "open-source-sitemap.xml").read_text(encoding="utf-8")
     assert "https://openlyuseful.org/brand/media-kit.html" in sitemap
+    studio_sitemap = (ROOT / "studio-sitemap.xml").read_text(encoding="utf-8")
+    assert "https://openlyuseful.com/" in studio_sitemap
+
+    vercel = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
+    assert any(
+        redirect["source"] == "/:path*"
+        and redirect["destination"] == "https://openlyuseful.com/:path*"
+        and redirect.get("has") == [{"type": "host", "value": "www.openlyuseful.com"}]
+        for redirect in vercel["redirects"]
+    )
+    expected_rewrites = {
+        ("/", "openlyuseful.com", "/studio"),
+        ("/robots.txt", "openlyuseful.com", "/studio-robots.txt"),
+        ("/sitemap.xml", "openlyuseful.com", "/studio-sitemap.xml"),
+    }
+    actual_rewrites = {
+        (rewrite["source"], rewrite["has"][0]["value"], rewrite["destination"])
+        for rewrite in vercel["rewrites"]
+        if "has" in rewrite
+    }
+    assert expected_rewrites.issubset(actual_rewrites)
+    assert [rewrite["source"] for rewrite in vercel["rewrites"]] == [
+        "/",
+        "/robots.txt",
+        "/sitemap.xml",
+        "/",
+        "/robots.txt",
+        "/sitemap.xml",
+    ]
+    assert {rewrite["source"]: rewrite["destination"] for rewrite in vercel["rewrites"] if "has" not in rewrite} == {
+        "/": "/open-source",
+        "/robots.txt": "/open-source-robots.txt",
+        "/sitemap.xml": "/open-source-sitemap.xml",
+    }
     print("Validated Openly Useful landing page")
 
 

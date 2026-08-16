@@ -25,15 +25,15 @@
     { "source": "/og-v5.png", "destination": "/brand/social/openly-useful-open-graph-1200x630.png", "permanent": true },
     { "source": "/og-v6.png", "destination": "/brand/social/openly-useful-open-graph-1200x630.png", "permanent": true },
     {
-      "source": "/:path*",
+      "source": "/design-system",
       "has": [{ "type": "host", "value": "openlyuseful.com" }],
-      "destination": "https://openlyuseful.org/:path*",
+      "destination": "https://openlyuseful.org/design-system",
       "permanent": true
     },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.openlyuseful.com" }],
-      "destination": "https://openlyuseful.org/:path*",
+      "destination": "https://openlyuseful.com/:path*",
       "permanent": true
     },
     {
@@ -41,6 +41,35 @@
       "has": [{ "type": "host", "value": "www.openlyuseful.org" }],
       "destination": "https://openlyuseful.org/:path*",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "/studio"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "/studio-robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "has": [{ "type": "host", "value": "openlyuseful.com" }],
+      "destination": "/studio-sitemap.xml"
+    },
+    {
+      "source": "/",
+      "destination": "/open-source"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/open-source-robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/open-source-sitemap.xml"
     }
   ]
 }

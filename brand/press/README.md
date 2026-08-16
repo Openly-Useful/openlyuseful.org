@@ -13,9 +13,10 @@ The matching SVG files in this folder are exact-size transparent export canvases
 
 ## Press boilerplate
 
-**Openly Useful is an independent open-source collective building practical public tools, reusable infrastructure, and open systems. Useful things, openly made.**
+**Openly Useful is an independent studio making thoughtful products and open-source tools. Products and studio work live at OpenlyUseful.com; public projects, documentation, and contribution paths live at OpenlyUseful.org. Useful things, openly made.**
 
-- Website: [openlyuseful.org](https://openlyuseful.org)
+- Studio: [openlyuseful.com](https://openlyuseful.com)
+- Open source: [openlyuseful.org](https://openlyuseful.org)
 - GitHub: [github.com/Openly-Useful](https://github.com/Openly-Useful)
 - Contact: [hello@openlyuseful.org](mailto:hello@openlyuseful.org)
 

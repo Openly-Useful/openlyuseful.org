@@ -19,7 +19,7 @@ The institutional form has no antenna. The character form adds one antenna only 
 1. **Open, not exposed.** Show how things work while giving people clear boundaries and safe defaults.
 2. **Familiar, not frozen.** Borrow the emotional memory of shared terminals, READMEs, computer clubs, and early web communities—not their usability limitations.
 3. **Useful before impressive.** Prefer direct language, obvious controls, and durable patterns.
-4. **Warm through evidence.** Trust comes from visible status, documentation, and honest constraints, supported by humane materials and tone.
+4. **Warm through evidence.** Trust comes from visible provenance, documentation, and honest constraints, supported by humane materials and tone.
 5. **One more chair.** Every surface should suggest that participation is expected and welcomed.
 
 ## Identity architecture
