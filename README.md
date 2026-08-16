@@ -13,7 +13,7 @@ This is a dependency-free static site deployed on one Vercel project with a host
 
 Both domains use the same canonical Open Monitor identity, Atkinson Hyperlegible Next and IBM Plex Mono type system, and Shell / Unix Ink / Terminal / Process foundations. The Studio page is the Ink-dominant inverse expression of that system; it does not introduce a second mark or palette.
 
-Vercel conditionally rewrites the `.com` root, robots file, and sitemap to their Studio documents while `.org` continues to serve the open-source homepage and public identity resources. `www` hosts permanently redirect to their matching apex domain.
+Vercel conditionally rewrites the `.com` root, robots file, and sitemap to their Studio documents, then falls back to the corresponding Open Source documents for `.org`. The internal documents intentionally do not occupy `index.html`, `robots.txt`, or `sitemap.xml`, because Vercel gives the filesystem precedence over rewrites. `www` hosts permanently redirect to their matching apex domain.
 
 ## Identity system
 
@@ -34,7 +34,7 @@ Vercel conditionally rewrites the `.com` root, robots file, and sitemap to their
 
 ## Local preview
 
-Serve this directory with any static web server, for example `python3 -m http.server 3000`.
+Serve this directory with any static web server, for example `python3 -m http.server 3000`, then open `/open-source.html` or `/studio.html` directly. The public root/robots/sitemap split depends on Vercel host matching and must be verified on a deployed preview; Vercel does not evaluate `has` conditions in `vercel dev`.
 
 ## License
 

@@ -8,7 +8,7 @@ from xml.etree import ElementTree
 ROOT = Path(__file__).resolve().parents[1]
 
 ACTIVE_SURFACES = [
-    "index.html",
+    "open-source.html",
     "studio.html",
     "design-system/index.html",
     "brand/brandkit.html",
@@ -114,7 +114,7 @@ def validate_brand_system() -> None:
     horizontal_reverse = assets["horizontalLockupReverse"]
     stacked = assets["stackedLockup"]
 
-    home = read("index.html")
+    home = read("open-source.html")
     assert lockup_count(home) == 3
     assert home.count(horizontal) == 1
     assert home.count(horizontal_reverse) == 1
