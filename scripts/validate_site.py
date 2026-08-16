@@ -177,6 +177,8 @@ def main() -> None:
     assert parser.title == "Openly Useful — Useful things, openly made."
     assert {"top", "projects", "principles"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
+    assert "https://github.com/openly-useful/citewire" in [link.lower() for link in parser.links]
+    assert "https://github.com/openly-useful/skill-feedback-engine" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
     assert "https://openlyuseful.org/brand/social/openly-useful-open-graph-1200x630.png" in html
     assert "/design-system" in parser.links
