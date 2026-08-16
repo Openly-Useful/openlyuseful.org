@@ -29,7 +29,7 @@ Version 3.1.0 extends that same source-of-truth rule beyond page lockups. GitHub
 | Uncontrolled font fallback | All brand text | Self-hosted Atkinson Hyperlegible Next and IBM Plex Mono variable WOFF2 files. |
 | Unversioned identity URLs | SVGs, favicon, board, social card | Published versioned v3/v4/v6 filenames and redirected historical URLs to current assets. |
 | Mixed label conventions | Kicker, section label, eyebrow | Defined technical label treatment and semantic usage. |
-| Undocumented state names | Project statuses | Standardized Open, In progress, Merged, Needs help, Archived. |
+| Undocumented state names | Repository lifecycle labels | Standardized Open, In progress, Merged, Needs help, Archived. |
 
 ## Token coverage
 

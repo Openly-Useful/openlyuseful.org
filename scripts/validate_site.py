@@ -125,7 +125,7 @@ def main() -> None:
     validate_brand_exports()
     required = [
         "BRAND_ARCHITECTURE.md",
-        "index.html",
+        "open-source.html",
         "styles.css",
         "studio.html",
         "studio.css",
@@ -137,8 +137,8 @@ def main() -> None:
         "icon-512-v1.png",
         "site.webmanifest",
         "og-v6.png",
-        "robots.txt",
-        "sitemap.xml",
+        "open-source-robots.txt",
+        "open-source-sitemap.xml",
         "vercel.json",
         "brand/README.md",
         "brand/manifest.json",
@@ -179,8 +179,10 @@ def main() -> None:
     missing = [name for name in required if not (ROOT / name).is_file()]
     if missing:
         raise AssertionError(f"Missing required site files: {', '.join(missing)}")
+    for shadowing_path in ["index.html", "robots.txt", "sitemap.xml"]:
+        assert not (ROOT / shadowing_path).exists(), f"{shadowing_path} would shadow a host-aware rewrite"
 
-    html = (ROOT / "index.html").read_text(encoding="utf-8")
+    html = (ROOT / "open-source.html").read_text(encoding="utf-8")
     parser = LandingPageParser()
     parser.feed(html)
     assert parser.title == "Openly Useful Open Source — Useful things, openly made."
@@ -203,7 +205,9 @@ def main() -> None:
     studio_html = (ROOT / "studio.html").read_text(encoding="utf-8")
     studio_parser = LandingPageParser()
     studio_parser.feed(studio_html)
-    assert studio_parser.title == "Openly Useful Studio — Independent products and experiments."
+    assert studio_parser.title == "Openly Useful Studio — Practical software, thoughtfully made."
+    assert "Practical software." in studio_html
+    assert "Thoughtfully made." in studio_html
     assert {"top", "work", "capabilities", "about"}.issubset(studio_parser.ids)
     assert "https://openlyuseful.org" in studio_parser.links
     assert "https://gloatroom.com" in studio_parser.links
@@ -282,7 +286,7 @@ def main() -> None:
     assert "/brand/templates/openly-useful-presentation-cover-1920x1080.png" in media_kit
     assert "One identity. Every useful surface." in media_kit
 
-    sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    sitemap = (ROOT / "open-source-sitemap.xml").read_text(encoding="utf-8")
     assert "https://openlyuseful.org/brand/media-kit.html" in sitemap
     studio_sitemap = (ROOT / "studio-sitemap.xml").read_text(encoding="utf-8")
     assert "https://openlyuseful.com/" in studio_sitemap
@@ -302,8 +306,22 @@ def main() -> None:
     actual_rewrites = {
         (rewrite["source"], rewrite["has"][0]["value"], rewrite["destination"])
         for rewrite in vercel["rewrites"]
+        if "has" in rewrite
     }
     assert expected_rewrites.issubset(actual_rewrites)
+    assert [rewrite["source"] for rewrite in vercel["rewrites"]] == [
+        "/",
+        "/robots.txt",
+        "/sitemap.xml",
+        "/",
+        "/robots.txt",
+        "/sitemap.xml",
+    ]
+    assert {rewrite["source"]: rewrite["destination"] for rewrite in vercel["rewrites"] if "has" not in rewrite} == {
+        "/": "/open-source",
+        "/robots.txt": "/open-source-robots.txt",
+        "/sitemap.xml": "/open-source-sitemap.xml",
+    }
     print("Validated Openly Useful landing page")
 
 

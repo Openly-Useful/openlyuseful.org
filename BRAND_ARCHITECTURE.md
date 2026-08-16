@@ -13,6 +13,7 @@ The domain endings reinforce the distinction, but each page also states its role
 
 - Master description: **Openly Useful is an independent studio making thoughtful products and open-source tools.**
 - Studio descriptor: **Independent products and experiments.**
+- Studio primary line: **Practical software, thoughtfully made.**
 - Open Source descriptor: **Open-source tools for everyone.**
 - Canonical tagline: **Useful things, openly made.**
 - Portfolio signpost: **Products and studio work live at OpenlyUseful.com. Open-source work lives at OpenlyUseful.org.**
@@ -28,7 +29,8 @@ The `.org` design system, media kit, and approved identity files remain canonica
 ## Routing contract
 
 - `openlyuseful.com/` serves `studio.html` through a Vercel host-matched rewrite.
-- `openlyuseful.org/` serves `index.html` as the open-source homepage.
+- `openlyuseful.org/` serves `open-source.html` through the default root rewrite.
+- Host-specific documents use internal filenames so Vercel's filesystem precedence cannot shadow the public root, robots, or sitemap rewrites.
 - Each domain has its own canonical metadata, robots response, sitemap, and sibling-domain cross-link.
 - `www.openlyuseful.com` and `www.openlyuseful.org` permanently redirect to their matching apex domains.
 - Open-source documentation remains canonical on `.org`; `.com/design-system` permanently redirects there.

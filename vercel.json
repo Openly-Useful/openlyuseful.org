@@ -58,6 +58,18 @@
       "source": "/sitemap.xml",
       "has": [{ "type": "host", "value": "openlyuseful.com" }],
       "destination": "/studio-sitemap.xml"
+    },
+    {
+      "source": "/",
+      "destination": "/open-source"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/open-source-robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/open-source-sitemap.xml"
     }
   ]
 }
