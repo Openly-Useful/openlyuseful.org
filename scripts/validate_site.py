@@ -225,13 +225,18 @@ def main() -> None:
     stack_html = (ROOT / "stack-index.html").read_text(encoding="utf-8")
     stack_parser = LandingPageParser()
     stack_parser.feed(stack_html)
-    assert stack_parser.title == "Stack Index — Agent ecosystem evidence by Openly Useful"
+    assert stack_parser.title == "Stack Index | Agent ecosystem evidence by Openly Useful"
     assert {"content", "overview", "pulse", "surfaces", "evidence", "method"}.issubset(stack_parser.ids)
     assert "https://openlyuseful.com/stack-index" in stack_html
     assert "https://openly-useful-stack-index.giovanniabreu.chatgpt.site" in stack_parser.links
     assert "/brand/ou-lockup-horizontal-reverse-v4.svg" in stack_html
+    assert "/brand/stack-index/evidence-map-1600x1000.jpg" in stack_html
+    assert (ROOT / "brand/stack-index/evidence-map-1600x1000.jpg").is_file()
     assert "Map the stack." in stack_html
     assert "Inspect the evidence." in stack_html
+    assert "Private workspace. Owner access is required" in stack_html
+    assert "—" not in stack_html
+    assert "–" not in stack_html
 
     system_html = (ROOT / "design-system/index.html").read_text(encoding="utf-8")
     system_parser = LandingPageParser()
