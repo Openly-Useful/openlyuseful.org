@@ -2,3 +2,4 @@
 .DS_Store
 brand/explorations/
 __pycache__/
+.env*

@@ -31,6 +31,12 @@
       "permanent": true
     },
     {
+      "source": "/stack-index",
+      "has": [{ "type": "host", "value": "openlyuseful.org" }],
+      "destination": "https://openlyuseful.com/stack-index",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.openlyuseful.com" }],
       "destination": "https://openlyuseful.com/:path*",

@@ -15,6 +15,11 @@ Both domains use the same canonical Open Monitor identity, Atkinson Hyperlegible
 
 Vercel conditionally rewrites the `.com` root, robots file, and sitemap to their Studio documents, then falls back to the corresponding Open Source documents for `.org`. The internal documents intentionally do not occupy `index.html`, `robots.txt`, or `sitemap.xml`, because Vercel gives the filesystem precedence over rewrites. `www` hosts permanently redirect to their matching apex domain.
 
+## Studio products
+
+- [`/stack-index`](https://openlyuseful.com/stack-index) is the canonical Studio product page for **Stack Index**, an evidence-led decision product for models, agents, Skills, and MCP servers. Its owner-only live workspace is linked from the page; Stack Index remains a Studio product until it adopts a meaningful open-source license, documentation, and governance model.
+- Requests for `openlyuseful.org/stack-index` permanently redirect to the Studio canonical URL. The Open Source site remains a concise signpost rather than a duplicate product surface.
+
 ## Identity system
 
 - [`design-system/README.md`](design-system/README.md) documents strategy, tokens, components, patterns, accessibility, voice, and governance.

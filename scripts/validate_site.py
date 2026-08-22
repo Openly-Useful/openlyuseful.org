@@ -129,6 +129,8 @@ def main() -> None:
         "styles.css",
         "studio.html",
         "studio.css",
+        "stack-index.html",
+        "stack-index.css",
         "studio-robots.txt",
         "studio-sitemap.xml",
         "favicon-v3.svg",
@@ -213,11 +215,23 @@ def main() -> None:
     assert {"top", "work", "capabilities", "about"}.issubset(studio_parser.ids)
     assert "https://openlyuseful.org" in studio_parser.links
     assert "https://gloatroom.com" in studio_parser.links
+    assert "/stack-index" in studio_parser.links
     assert "mailto:hello@openlyuseful.com" in studio_parser.links
     assert "https://openlyuseful.com/brand/studio/openly-useful-studio-open-graph-1200x630.png" in studio_html
     assert "/brand/ou-lockup-horizontal-reverse-v4.svg" in studio_html
     assert "project status" not in studio_html.lower()
     assert "progressmark" not in studio_html.lower()
+
+    stack_html = (ROOT / "stack-index.html").read_text(encoding="utf-8")
+    stack_parser = LandingPageParser()
+    stack_parser.feed(stack_html)
+    assert stack_parser.title == "Stack Index — Agent ecosystem evidence by Openly Useful"
+    assert {"content", "overview", "pulse", "surfaces", "evidence", "method"}.issubset(stack_parser.ids)
+    assert "https://openlyuseful.com/stack-index" in stack_html
+    assert "https://openly-useful-stack-index.giovanniabreu.chatgpt.site" in stack_parser.links
+    assert "/brand/ou-lockup-horizontal-reverse-v4.svg" in stack_html
+    assert "Map the stack." in stack_html
+    assert "Inspect the evidence." in stack_html
 
     system_html = (ROOT / "design-system/index.html").read_text(encoding="utf-8")
     system_parser = LandingPageParser()
@@ -237,6 +251,11 @@ def main() -> None:
     assert "prefers-reduced-motion" in studio_css
     assert "forced-colors" in studio_css
     assert "@media (max-width:560px)" in studio_css
+
+    stack_css = (ROOT / "stack-index.css").read_text(encoding="utf-8")
+    assert "prefers-reduced-motion" in stack_css
+    assert "forced-colors" in stack_css
+    assert "@media (max-width:560px)" in stack_css
 
     tokens = (ROOT / "design-system/tokens.css").read_text(encoding="utf-8")
     for token in [
@@ -292,6 +311,7 @@ def main() -> None:
     assert "https://openlyuseful.org/brand/media-kit.html" in sitemap
     studio_sitemap = (ROOT / "studio-sitemap.xml").read_text(encoding="utf-8")
     assert "https://openlyuseful.com/" in studio_sitemap
+    assert "https://openlyuseful.com/stack-index" in studio_sitemap
 
     vercel = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
     assert any(
@@ -324,6 +344,12 @@ def main() -> None:
         "/robots.txt": "/open-source-robots.txt",
         "/sitemap.xml": "/open-source-sitemap.xml",
     }
+    assert any(
+        redirect["source"] == "/stack-index"
+        and redirect["destination"] == "https://openlyuseful.com/stack-index"
+        and redirect.get("has") == [{"type": "host", "value": "openlyuseful.org"}]
+        for redirect in vercel["redirects"]
+    )
     print("Validated Openly Useful landing page")
 
 
