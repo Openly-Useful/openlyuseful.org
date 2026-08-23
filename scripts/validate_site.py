@@ -297,6 +297,11 @@ def main() -> None:
         "plannedName": "Openly Useful LLC",
         "activeName": None,
         "status": "formation-pending",
+        "currentOperator": {
+            "type": "founder-individual",
+            "displayName": "Founder of Openly Useful",
+            "operatingAs": "Openly Useful",
+        },
         "plannedRoles": ["publisher", "operator", "licensee"],
     }
     assert publisher["domains"] == {
@@ -323,13 +328,14 @@ def main() -> None:
     assert publisher["publication"] == {
         "localGenerationAllowed": True,
         "localTestingAllowed": True,
-        "externalPublicationAllowed": False,
-        "authorization": "withheld",
+        "externalPublicationAllowed": True,
+        "authorization": "granted",
+        "authorizationBasis": "founder-owner-direct",
+        "effectiveWhileFormationPending": True,
         "blockingRequirements": [
-            "formation-active",
-            "publisher-authorization",
             "namespace-verification",
-            "public-policy-url-verification",
+            "provider-account-authentication",
+            "provider-review",
         ],
     }
     assert "published authority endpoint" in publisher["artifactPolicy"]["authorityEndpoint"]
@@ -337,7 +343,8 @@ def main() -> None:
     assert "sourceOfTruth" not in publisher["artifactPolicy"]
     assert "derive publisher identity" in publisher["artifactPolicy"]["derivation"]
     assert "must not be represented as formed" in publisher["artifactPolicy"]["activation"]
-    assert "required publisher verification" in publisher["artifactPolicy"]["activation"]
+    assert "founder-operated" in publisher["artifactPolicy"]["activation"]
+    assert "does not require a transfer of RunGlance ownership" in publisher["artifactPolicy"]["activation"]
     assert "ownership verification" not in publisher["artifactPolicy"]["activation"]
 
     formation_aware_files["README.md"] = (ROOT / "README.md").read_text(encoding="utf-8")

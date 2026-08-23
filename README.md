@@ -22,12 +22,16 @@ Openly Useful has one canonical publisher record across both domains and all pro
 - Display name: **Openly Useful**
 - Planned legal entity: **Openly Useful LLC**
 - Legal-entity status: **`formation-pending`**
+- Current operator: **Founder of Openly Useful, operating as Openly Useful**
+- Publication authorization: **`founder-owner-direct`**
 - Human-readable record: [`/publisher`](https://openlyuseful.org/publisher)
 - Published authority endpoint: [`publisher/manifest.json`](publisher/manifest.json)
 - Anonymous support URL: [OpenlyUseful.org/support](https://openlyuseful.org/support)
 - Canonical policies: [Privacy](https://openlyuseful.org/legal/privacy), [Terms](https://openlyuseful.org/legal/terms), and [Security](https://openlyuseful.org/security)
 
-The planned entity is not represented as formed, active, or the current operator. The public manifest is projected from the governed editable publisher source; it is the published authority endpoint, not a separately edited second source of truth. Provider-specific skills, MCP manifests, packages, and marketplace listings must derive identity, domains, contacts, policy URLs, and namespaces from that endpoint; adapters may change packaging but not publisher identity.
+The planned entity is not represented as formed, active, or the current operator. Openly Useful is founder-operated while formation is pending, and source, package, registry, and provider publication is directly authorized by the founder-owner. Provider authentication, namespace verification, and review remain independent requirements. RunGlance remains founder-created and personally owned, with no ownership transfer required; any later LLC role is publisher, operator, and licensee.
+
+The public manifest is projected from the governed editable publisher source; it is the published authority endpoint, not a separately edited second source of truth. Provider-specific skills, MCP manifests, packages, and marketplace listings must derive identity, domains, contacts, policy URLs, and namespaces from that endpoint; adapters may change packaging but not publisher identity.
 
 ## Identity system
 
