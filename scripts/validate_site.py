@@ -197,12 +197,14 @@ def main() -> None:
     assert parser.title == "Openly Useful Open Source — Useful things, openly made."
     assert {"top", "projects", "principles", "about"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
-    assert "https://github.com/openly-useful/citewire" in [link.lower() for link in parser.links]
     assert "https://github.com/openly-useful/skill-feedback-engine" in [link.lower() for link in parser.links]
     assert "Agent Workflow Swarms" in html
     assert "https://github.com/openly-useful/agent-workflow-swarms" in [link.lower() for link in parser.links]
     assert "mailto:hello@openlyuseful.org" in parser.links
     assert "https://openlyuseful.org/brand/open-source/openly-useful-open-source-open-graph-1200x630.png" in html
+    assert "https://citewire.org" in parser.links
+    assert "Attribution-first MCP infrastructure" in html
+    assert "CiteWire" in html
     assert "https://openlyuseful.com" in parser.links
     assert "/design-system" in parser.links
     assert "/brand/ou-lockup-horizontal-v4.svg" in html
