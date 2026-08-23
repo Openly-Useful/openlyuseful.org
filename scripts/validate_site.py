@@ -347,6 +347,10 @@ def main() -> None:
     assert "does not require a transfer of RunGlance ownership" in publisher["artifactPolicy"]["activation"]
     assert "ownership verification" not in publisher["artifactPolicy"]["activation"]
 
+    mcp_registry_auth = (ROOT / ".well-known/mcp-registry-auth").read_text(encoding="utf-8").strip()
+    assert mcp_registry_auth.startswith("v=MCPv1; k=ecdsap384; p=")
+    assert len(mcp_registry_auth.removeprefix("v=MCPv1; k=ecdsap384; p=")) > 60
+
     formation_aware_files["README.md"] = (ROOT / "README.md").read_text(encoding="utf-8")
     formation_aware_files["BRAND_ARCHITECTURE.md"] = (ROOT / "BRAND_ARCHITECTURE.md").read_text(encoding="utf-8")
     forbidden_active_claims = {
