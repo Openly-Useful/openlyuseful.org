@@ -15,6 +15,20 @@ Both domains use the same canonical Open Monitor identity, Atkinson Hyperlegible
 
 Vercel conditionally rewrites the `.com` root, robots file, and sitemap to their Studio documents, then falls back to the corresponding Open Source documents for `.org`. The internal documents intentionally do not occupy `index.html`, `robots.txt`, or `sitemap.xml`, because Vercel gives the filesystem precedence over rewrites. `www` hosts permanently redirect to their matching apex domain.
 
+## Publisher identity
+
+Openly Useful has one canonical publisher record across both domains and all provider artifacts:
+
+- Display name: **Openly Useful**
+- Planned legal entity: **Openly Useful LLC**
+- Legal-entity status: **`formation-pending`**
+- Human-readable record: [`/publisher`](https://openlyuseful.org/publisher)
+- Published authority endpoint: [`publisher/manifest.json`](publisher/manifest.json)
+- Anonymous support URL: [OpenlyUseful.org/support](https://openlyuseful.org/support)
+- Canonical policies: [Privacy](https://openlyuseful.org/legal/privacy), [Terms](https://openlyuseful.org/legal/terms), and [Security](https://openlyuseful.org/security)
+
+The planned entity is not represented as formed, active, or the current operator. The public manifest is projected from the governed editable publisher source; it is the published authority endpoint, not a separately edited second source of truth. Provider-specific skills, MCP manifests, packages, and marketplace listings must derive identity, domains, contacts, policy URLs, and namespaces from that endpoint; adapters may change packaging but not publisher identity.
+
 ## Identity system
 
 - [`design-system/README.md`](design-system/README.md) documents strategy, tokens, components, patterns, accessibility, voice, and governance.
@@ -34,7 +48,7 @@ Vercel conditionally rewrites the `.com` root, robots file, and sitemap to their
 
 ## Local preview
 
-Serve this directory with any static web server, for example `python3 -m http.server 3000`, then open `/open-source.html` or `/studio.html` directly. The public root/robots/sitemap split depends on Vercel host matching and must be verified on a deployed preview; Vercel does not evaluate `has` conditions in `vercel dev`.
+Serve this directory with any static web server, for example `python3 -m http.server 3000`, then open `/open-source.html`, `/studio.html`, `/publisher/`, `/support.html`, `/legal/privacy.html`, `/legal/terms.html`, or `/security.html` directly. The public root/robots/sitemap split and `.com` policy redirects depend on Vercel host matching and must be verified on a deployed preview; Vercel does not evaluate `has` conditions in `vercel dev`.
 
 ## License
 

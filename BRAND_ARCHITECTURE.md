@@ -9,6 +9,17 @@ Openly Useful is one master studio brand with two complementary public homes.
 
 The domain endings reinforce the distinction, but each page also states its role in navigation, metadata, page copy, and cross-domain links. Neither domain is a separate brand.
 
+## Publisher and legal-entity model
+
+Openly Useful uses one canonical publisher identity across both domains and across skills, MCP servers, packages, and provider listings. **Openly Useful** is the public display name. **Openly Useful LLC** is the planned legal entity; its current status is **`formation-pending`**. The planned entity must not be described as formed, active, or the current legal publisher or operator until formation and required publisher verification are complete.
+
+[`OpenlyUseful.org/publisher`](https://openlyuseful.org/publisher) is the human-readable publisher record, and [`publisher/manifest.json`](publisher/manifest.json) is its published machine-readable authority endpoint. The public manifest is projected from the governed editable publisher source; it is not a separately maintained second source of truth. Provider-specific artifacts may adapt packaging, but must derive publisher identity, domains, contacts, policy URLs, and namespaces from that authority endpoint.
+
+- `OpenlyUseful.com` is the Studio and product-facing home.
+- `OpenlyUseful.org` is the Open Source, documentation, policy, and canonical publisher home.
+- `org.openlyuseful` is the open-source MCP namespace.
+- `com.openlyuseful` is the reserved Studio MCP namespace.
+
 ## Canonical language
 
 - Master description: **Openly Useful is an independent studio making thoughtful products and open-source tools.**
@@ -34,3 +45,4 @@ The `.org` design system, media kit, and approved identity files remain canonica
 - Each domain has its own canonical metadata, robots response, sitemap, and sibling-domain cross-link.
 - `www.openlyuseful.com` and `www.openlyuseful.org` permanently redirect to their matching apex domains.
 - Open-source documentation remains canonical on `.org`; `.com/design-system` permanently redirects there.
+- Publisher, support, privacy, terms, and security records remain canonical on `.org`; the corresponding `.com` paths permanently redirect there.
