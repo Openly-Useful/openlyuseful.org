@@ -198,12 +198,12 @@ def main() -> None:
     assert {"top", "projects", "principles", "about"}.issubset(parser.ids)
     assert "https://github.com/openly-useful" in [link.lower() for link in parser.links]
     assert "https://github.com/openly-useful/skill-feedback-engine" in [link.lower() for link in parser.links]
-    assert "Project Status" in html
+    assert "StatusGlance / Readiness" in html
     assert "RunGlance" in html
     assert "Linear Project Skills" in html
     assert "Operations Pulse" in html
     assert "https://github.com/openly-useful/project-status" in [link.lower() for link in parser.links]
-    assert "https://github.com/openly-useful/project-status/releases/tag/v1.2.0" in [link.lower() for link in parser.links]
+    assert "https://github.com/openly-useful/project-status/releases/tag/v1.3.0" in [link.lower() for link in parser.links]
     assert "https://github.com/openly-useful/linear-project-skills" in [link.lower() for link in parser.links]
     assert "https://github.com/openly-useful/operations-pulse" in [link.lower() for link in parser.links]
     assert "Agent Workflow Swarms" in html
